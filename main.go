@@ -4,7 +4,7 @@ import (
 	"fmt"
 	// "github.com/sirupsen/logrus"
 	"encoding/json"
-	robinhood "gitlab.com/austin-millan/robinhood_openapi/openapi"
+	robinhood "gitlab.com/austin-millan/robinhood-openapi/openapi"
 )
 
 func main() {
