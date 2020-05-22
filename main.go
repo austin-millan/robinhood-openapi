@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
-	// "github.com/sirupsen/logrus"
 	"encoding/json"
-	robinhood "gitlab.com/austin-millan/robinhood-openapi/openapi"
+	"fmt"
+
+	robinhood "gitlab.com/trade-hawk/robinhood-openapi/openapi"
 )
 
 func main() {

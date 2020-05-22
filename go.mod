@@ -1,2 +1,2 @@
-module gitlab.com/austin-millan/robinhood-openapi/openapi
+module gitlab.com/trade-hawk/robinhood-openapi
 go 1.12
