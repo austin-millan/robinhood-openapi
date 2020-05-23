@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **Quantity** | **int32** |  | [optional] 
 **RejectReason** | **string** |  | [optional] 
 **Side** | **string** |  | [optional] 
-**State** | **string** |  | [optional] 
+**State** | [**OrderState**](OrderState.md) |  | [optional] 
 **StopPrice** | **float64** |  | [optional] 
 **Symbol** | **string** |  | [optional] 
 **TimeInForce** | **string** |  | [optional] 

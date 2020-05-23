@@ -30,7 +30,7 @@ type AccountInfo struct {
 	Sma float64 `json:"sma,omitempty"`
 	SmaHeldForOrders float64 `json:"sma_held_for_orders,omitempty"`
 	SweepEnabled bool `json:"sweep_enabled,omitempty"`
-	Type string `json:"type,omitempty"`
+	Type AccountType `json:"type,omitempty"`
 	UnclearedDeposits float64 `json:"uncleared_deposits,omitempty"`
 	UnsettledFunds float64 `json:"unsettled_funds,omitempty"`
 	UpdatedAt time.Time `json:"updated_at,omitempty"`

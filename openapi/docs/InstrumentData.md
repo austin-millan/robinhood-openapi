@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **Quote** | **string** |  | [optional] 
 **SimpleName** | **string** |  | [optional] 
 **Splits** | **string** |  | [optional] 
-**State** | **string** |  | [optional] 
+**State** | [**InstrumentState**](InstrumentState.md) |  | [optional] 
 **Symbol** | **string** |  | [optional] 
 **Tradability** | **string** |  | [optional] 
 **Tradeable** | **string** |  | [optional] 

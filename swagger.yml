@@ -962,7 +962,7 @@ definitions:
       sweep_enabled:
         type: boolean
       type:
-        type: string
+        $ref: '#/definitions/AccountType'
       uncleared_deposits:
         type: number
         format: double
@@ -1004,7 +1004,7 @@ definitions:
       date_of_birth:
         type: string
       marital_status:
-        type: string
+        $ref: '#/definitions/MaritalStatus'
       number_dependents:
         type: integer
         format: int32
@@ -1142,7 +1142,7 @@ definitions:
       splits:
         type: string
       state:
-        type: string
+        $ref: '#/definitions/InstrumentState'
       symbol:
         type: string
       tradability:
@@ -1174,25 +1174,25 @@ definitions:
       annual_income:
         type: string
       investment_experience:
-        type: string
+        $ref: '#/definitions/InvestmentExperience'
       investment_objective:
-        type: string
+        $ref: '#/definitions/InvestmentObjective'
       liquid_net_worth:
         type: string
       liquidity_needs:
-        type: string
+        $ref: '#/definitions/LiquidityNeeds'
       risk_tolerance:
-        type: string
+        $ref: '#/definitions/RiskTolerance'
       source_of_funds:
-        type: string
+        $ref: '#/definitions/SourceOfFunds'
       suitability_verified:
         type: boolean
       tax_bracket:
-        type: string
+        $ref: '#/definitions/TaxBracket'
       time_horizon:
-        type: string
+        $ref: '#/definitions/TimeHorizon'
       total_net_worth:
-        type: string
+        $ref: '#/definitions/TotalNetWorth'
       updated_at:
         type: string
         format: date-time
@@ -1519,7 +1519,7 @@ definitions:
       side:
         type: string
       state:
-        type: string
+        $ref: '#/definitions/OrderState'
       stop_price:
         type: number
         format: double
@@ -1538,7 +1538,9 @@ definitions:
         type: string
     title: OrderResponse
   OrderResponse:
-    $ref: definitions/Order
+    properties:
+      schema:
+        $ref: '#/definitions/Order'
   Portfolio:
     type: object
     properties:
@@ -1729,3 +1731,95 @@ definitions:
       watchlist:
         type: string
     title: WatchListsData
+  OrderState:
+    type: string
+    enum:
+      - queued
+      - unconfirmed
+      - confirmed
+      - partially_filled
+      - filled
+      - rejected
+      - canceled
+      - failed
+  InstrumentState:
+    type: string
+    enum:
+      - active
+      - inactive
+  AccountType:
+    title: type
+    type: string
+    enum:
+      - cash
+      - margin
+  MaritalStatus:
+    type: string
+    enum:
+      - single
+      - married
+  InvestmentExperience:
+    type: string
+    enum:
+      - extensive_investment_exp
+      - good_investment_exp
+      - limited_investment_exp
+      - no_investment_exp
+  InvestmentObjective:
+    type: string
+    enum:
+      - cap_preserve_invest_obj
+      - income_invest_obj
+      - growth_invest_obj
+      - speculation_invest_obj
+      - other_invest_obj
+  LiquidityNeeds:
+    type: string
+    enum:
+      - not_important_liq_need
+      - somewhat_important_liq_need
+      - very_important_liq_need
+  RiskTolerance:
+    type: string
+    enum:
+      - low_risk_tolerance
+      - med_risk_tolerance
+      - high_risk_tolerance
+  SourceOfFunds:
+    type: string
+    enum:
+      - savings_personal_income
+      - pension_retirement
+      - insurance_payout
+      - inheritance
+      - gift
+      - sale_business_or_property
+      - other
+  TaxBracket:
+    type: string
+    enum:
+      - 0_pct
+      - 20_pct
+      - 25_pct
+      - 28_pct
+      - 33_pct
+      - 35_pct
+      - 39_6_pct
+  TimeHorizon:
+    type: string
+    enum:
+      - short_time_horizon
+      - med_time_horizon
+      - long_time_horizon
+  TotalNetWorth:
+    type: string
+    enum:
+      - "0_24999"
+      - "25000_49999"
+      - "50000_64999"
+      - "65000_99999"
+      - "100000_149999"
+      - "150000_199999"
+      - "250000_499999"
+      - "500000_999999"
+      - "1000000_inf"

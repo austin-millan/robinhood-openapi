@@ -24,7 +24,7 @@ type InstrumentData struct {
 	Quote string `json:"quote,omitempty"`
 	SimpleName string `json:"simple_name,omitempty"`
 	Splits string `json:"splits,omitempty"`
-	State string `json:"state,omitempty"`
+	State InstrumentState `json:"state,omitempty"`
 	Symbol string `json:"symbol,omitempty"`
 	Tradability string `json:"tradability,omitempty"`
 	Tradeable string `json:"tradeable,omitempty"`

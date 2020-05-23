@@ -18,7 +18,7 @@ type BasicInfo struct {
 	City string `json:"city,omitempty"`
 	CountryOfResidence string `json:"country_of_residence,omitempty"`
 	DateOfBirth string `json:"date_of_birth,omitempty"`
-	MaritalStatus string `json:"marital_status,omitempty"`
+	MaritalStatus MaritalStatus `json:"marital_status,omitempty"`
 	NumberDependents int32 `json:"number_dependents,omitempty"`
 	PhoneNumber string `json:"phone_number,omitempty"`
 	State string `json:"state,omitempty"`

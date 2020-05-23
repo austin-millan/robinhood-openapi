@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **City** | **string** |  | [optional] 
 **CountryOfResidence** | **string** |  | [optional] 
 **DateOfBirth** | **string** |  | [optional] 
-**MaritalStatus** | **string** |  | [optional] 
+**MaritalStatus** | [**MaritalStatus**](MaritalStatus.md) |  | [optional] 
 **NumberDependents** | **int32** |  | [optional] 
 **PhoneNumber** | **string** |  | [optional] 
 **State** | **string** |  | [optional] 

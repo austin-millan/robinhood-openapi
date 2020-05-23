@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **Sma** | **float64** |  | [optional] 
 **SmaHeldForOrders** | **float64** |  | [optional] 
 **SweepEnabled** | **bool** |  | [optional] 
-**Type** | **string** |  | [optional] 
+**Type** | [**AccountType**](AccountType.md) |  | [optional] 
 **UnclearedDeposits** | **float64** |  | [optional] 
 **UnsettledFunds** | **float64** |  | [optional] 
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 

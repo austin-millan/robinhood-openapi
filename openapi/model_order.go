@@ -32,7 +32,7 @@ type Order struct {
 	Quantity int32 `json:"quantity,omitempty"`
 	RejectReason string `json:"reject_reason,omitempty"`
 	Side string `json:"side,omitempty"`
-	State string `json:"state,omitempty"`
+	State OrderState `json:"state,omitempty"`
 	StopPrice float64 `json:"stop_price,omitempty"`
 	Symbol string `json:"symbol,omitempty"`
 	TimeInForce string `json:"time_in_force,omitempty"`
