@@ -26,9 +26,9 @@ Name | Type | Description | Notes
 **State** | [**OrderState**](OrderState.md) |  | [optional] 
 **StopPrice** | **float64** |  | [optional] 
 **Symbol** | **string** |  | [optional] 
-**TimeInForce** | **string** |  | [optional] 
+**TimeInForce** | [**TimeInForce**](TimeInForce.md) |  | [optional] 
 **Trigger** | **string** |  | [optional] 
-**Type** | **string** |  | [optional] 
+**Type** | [**ExecutionType**](ExecutionType.md) |  | [optional] 
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **Url** | **string** |  | [optional] 
 

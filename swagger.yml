@@ -559,8 +559,9 @@ paths:
           type: string
         - name: time_in_force
           in: query
-          required: false
           type: string
+          required: false
+          # $ref: '#/definitions/TimeInForce'
         - name: trigger
           in: query
           required: false
@@ -1526,7 +1527,8 @@ definitions:
       symbol:
         type: string
       time_in_force:
-        type: string
+        # type: string
+        $ref: '#/definitions/TimeInForce'
       trigger:
         type: string
       type:
@@ -1828,3 +1830,15 @@ definitions:
     enum:
       - market
       - limit
+  Trigger:
+    type: string
+    enum:
+      - immediate
+      - stop
+  TimeInForce:
+      type: string
+      enum:
+        - gfd
+        - gtc
+        - ioc
+        - opg

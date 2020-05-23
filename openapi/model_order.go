@@ -35,9 +35,9 @@ type Order struct {
 	State OrderState `json:"state,omitempty"`
 	StopPrice float64 `json:"stop_price,omitempty"`
 	Symbol string `json:"symbol,omitempty"`
-	TimeInForce string `json:"time_in_force,omitempty"`
+	TimeInForce TimeInForce `json:"time_in_force,omitempty"`
 	Trigger string `json:"trigger,omitempty"`
-	Type string `json:"type,omitempty"`
+	Type ExecutionType `json:"type,omitempty"`
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	Url string `json:"url,omitempty"`
 }
