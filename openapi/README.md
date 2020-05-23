@@ -98,6 +98,7 @@ Class | Method | HTTP request | Description
  - [MultipleOfWatchListCreateResponse](docs/MultipleOfWatchListCreateResponse.md)
  - [MultipleOfWatchListsData](docs/MultipleOfWatchListsData.md)
  - [Order](docs/Order.md)
+ - [OrderAction](docs/OrderAction.md)
  - [OrderResponse](docs/OrderResponse.md)
  - [OrderState](docs/OrderState.md)
  - [Portfolio](docs/Portfolio.md)

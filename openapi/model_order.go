@@ -14,6 +14,7 @@ import (
 // Order struct for Order
 type Order struct {
 	Account string `json:"account,omitempty"`
+	Action OrderAction `json:"action,omitempty"`
 	AveragePrice float64 `json:"average_price,omitempty"`
 	Cancel string `json:"cancel,omitempty"`
 	ClientId string `json:"client_id,omitempty"`

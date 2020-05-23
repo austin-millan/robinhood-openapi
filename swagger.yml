@@ -1474,6 +1474,8 @@ definitions:
     properties:
       account:
         type: string
+      action:
+        $ref: '#/definitions/OrderAction'
       average_price:
         type: number
         format: double
@@ -1842,3 +1844,10 @@ definitions:
         - gtc
         - ioc
         - opg
+  OrderAction:
+      type: string
+      enum:
+        - order
+        - status
+        - cancel
+        - history

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Account** | **string** |  | [optional] 
+**Action** | [**OrderAction**](OrderAction.md) |  | [optional] 
 **AveragePrice** | **float64** |  | [optional] 
 **Cancel** | **string** |  | [optional] 
 **ClientId** | **string** |  | [optional] 
