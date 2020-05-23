@@ -92,6 +92,7 @@ Class | Method | HTTP request | Description
  - [MultipleOfInstrumentSplit](docs/MultipleOfInstrumentSplit.md)
  - [MultipleOfMarketData](docs/MultipleOfMarketData.md)
  - [MultipleOfMovers](docs/MultipleOfMovers.md)
+ - [MultipleOfOrder](docs/MultipleOfOrder.md)
  - [MultipleOfOrderResponse](docs/MultipleOfOrderResponse.md)
  - [MultipleOfPosition](docs/MultipleOfPosition.md)
  - [MultipleOfQuoteData](docs/MultipleOfQuoteData.md)

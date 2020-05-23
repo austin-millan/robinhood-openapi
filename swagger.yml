@@ -492,7 +492,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/MultipleOfOrderResponse'
+            $ref: '#/definitions/MultipleOfOrder'
         '401':
           description: Unauthorized
         '403':
@@ -1394,6 +1394,20 @@ definitions:
         items:
           $ref: '#/definitions/Movers'
     title: MultipleOfMovers
+  MultipleOfOrder:
+    type: object
+    properties:
+      count:
+        type: integer
+        format: int32
+      next:
+        type: string
+      previous:
+        type: string
+      results:
+        type: array
+        items:
+          $ref: '#/definitions/OrderResponse'
   MultipleOfOrderResponse:
     type: object
     properties:
