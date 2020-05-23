@@ -1530,7 +1530,7 @@ definitions:
       trigger:
         type: string
       type:
-        type: string
+        $ref: '#/definitions/ExecutionType'
       updated_at:
         type: string
         format: date-time
@@ -1823,3 +1823,8 @@ definitions:
       - "250000_499999"
       - "500000_999999"
       - "1000000_inf"
+  ExecutionType:
+    type: string
+    enum:
+      - market
+      - limit
