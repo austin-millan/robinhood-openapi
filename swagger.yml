@@ -1407,22 +1407,7 @@ definitions:
       results:
         type: array
         items:
-          $ref: '#/definitions/OrderResponse'
-  MultipleOfOrderResponse:
-    type: object
-    properties:
-      count:
-        type: integer
-        format: int32
-      next:
-        type: string
-      previous:
-        type: string
-      results:
-        type: array
-        items:
-          $ref: '#/definitions/OrderResponse'
-    title: MultipleOfOrderResponse
+          $ref: '#/definitions/Order'
   MultipleOfPosition:
     type: object
     properties:
@@ -1554,11 +1539,9 @@ definitions:
         format: date-time
       url:
         type: string
-    title: OrderResponse
+    title: Order
   OrderResponse:
-    properties:
-      schema:
-        $ref: '#/definitions/Order'
+    $ref: '#/definitions/Order'
   Portfolio:
     type: object
     properties:
