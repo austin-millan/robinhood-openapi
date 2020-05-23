@@ -13,14 +13,14 @@ import (
 )
 // QuoteData struct for QuoteData
 type QuoteData struct {
-	AdjustedPreviousClose float64 `json:"adjusted_previous_close,omitempty"`
-	AskPrice float64 `json:"ask_price,omitempty"`
+	AdjustedPreviousClose string `json:"adjusted_previous_close,omitempty"`
+	AskPrice string `json:"ask_price,omitempty"`
 	AskSize int32 `json:"ask_size,omitempty"`
 	BidPrice float64 `json:"bid_price,omitempty"`
 	BidSize int32 `json:"bid_size,omitempty"`
-	LastExtendedHoursTradePrice float64 `json:"last_extended_hours_trade_price,omitempty"`
-	LastTradePrice float64 `json:"last_trade_price,omitempty"`
-	PreviousClose float64 `json:"previous_close,omitempty"`
+	LastExtendedHoursTradePrice string `json:"last_extended_hours_trade_price,omitempty"`
+	LastTradePrice string `json:"last_trade_price,omitempty"`
+	PreviousClose string `json:"previous_close,omitempty"`
 	PreviousCloseDate string `json:"previous_close_date,omitempty"`
 	Symbol string `json:"symbol,omitempty"`
 	TradingHalted bool `json:"trading_halted,omitempty"`

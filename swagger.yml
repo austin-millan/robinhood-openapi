@@ -1486,8 +1486,7 @@ definitions:
         type: string
         format: date-time
       cumulative_quantity:
-        type: number
-        format: double
+        type: string
       executions:
         type: array
         items:
@@ -1495,8 +1494,7 @@ definitions:
       extended_hours:
         type: boolean
       fees:
-        type: number
-        format: double
+        type: string
       id:
         type: string
       instrument:
@@ -1514,8 +1512,7 @@ definitions:
         type: number
         format: double
       quantity:
-        type: integer
-        format: int32
+        type: string
       reject_reason:
         type: string
       side:
@@ -1523,12 +1520,10 @@ definitions:
       state:
         $ref: '#/definitions/OrderState'
       stop_price:
-        type: number
-        format: double
+        type: string
       symbol:
         type: string
       time_in_force:
-        # type: string
         $ref: '#/definitions/TimeInForce'
       trigger:
         type: string
@@ -1638,11 +1633,9 @@ definitions:
     type: object
     properties:
       adjusted_previous_close:
-        type: number
-        format: double
+        type: string
       ask_price:
-        type: number
-        format: double
+        type: string
       ask_size:
         type: integer
         format: int32
@@ -1653,14 +1646,11 @@ definitions:
         type: integer
         format: int32
       last_extended_hours_trade_price:
-        type: number
-        format: double
+        type: string
       last_trade_price:
-        type: number
-        format: double
+        type: string
       previous_close:
-        type: number
-        format: double
+        type: string
       previous_close_date:
         type: string
         format: date

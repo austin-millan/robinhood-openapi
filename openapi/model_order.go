@@ -19,10 +19,10 @@ type Order struct {
 	Cancel string `json:"cancel,omitempty"`
 	ClientId string `json:"client_id,omitempty"`
 	CreatedAt time.Time `json:"created_at,omitempty"`
-	CumulativeQuantity float64 `json:"cumulative_quantity,omitempty"`
+	CumulativeQuantity string `json:"cumulative_quantity,omitempty"`
 	Executions []Execution `json:"executions,omitempty"`
 	ExtendedHours bool `json:"extended_hours,omitempty"`
-	Fees float64 `json:"fees,omitempty"`
+	Fees string `json:"fees,omitempty"`
 	Id string `json:"id,omitempty"`
 	Instrument string `json:"instrument,omitempty"`
 	LastTransactionAt time.Time `json:"last_transaction_at,omitempty"`
@@ -30,11 +30,11 @@ type Order struct {
 	OverrideDtbpChecks bool `json:"override_dtbp_checks,omitempty"`
 	Position string `json:"position,omitempty"`
 	Price float64 `json:"price,omitempty"`
-	Quantity int32 `json:"quantity,omitempty"`
+	Quantity string `json:"quantity,omitempty"`
 	RejectReason string `json:"reject_reason,omitempty"`
 	Side string `json:"side,omitempty"`
 	State OrderState `json:"state,omitempty"`
-	StopPrice float64 `json:"stop_price,omitempty"`
+	StopPrice string `json:"stop_price,omitempty"`
 	Symbol string `json:"symbol,omitempty"`
 	TimeInForce TimeInForce `json:"time_in_force,omitempty"`
 	Trigger string `json:"trigger,omitempty"`
