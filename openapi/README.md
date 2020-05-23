@@ -68,7 +68,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AccountInfo](docs/AccountInfo.md)
- - [AuthResponse](docs/AuthResponse.md)
+ - [Auth](docs/Auth.md)
  - [BasicInfo](docs/BasicInfo.md)
  - [CashBalances](docs/CashBalances.md)
  - [Execution](docs/Execution.md)
@@ -90,7 +90,7 @@ Class | Method | HTTP request | Description
  - [MultipleOfQuoteData](docs/MultipleOfQuoteData.md)
  - [MultipleOfWatchListCreateResponse](docs/MultipleOfWatchListCreateResponse.md)
  - [MultipleOfWatchListsData](docs/MultipleOfWatchListsData.md)
- - [OrderResponse](docs/OrderResponse.md)
+ - [Order](docs/Order.md)
  - [Portfolio](docs/Portfolio.md)
  - [Position](docs/Position.md)
  - [QuoteData](docs/QuoteData.md)

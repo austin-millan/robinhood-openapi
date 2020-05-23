@@ -11,8 +11,8 @@ package openapi
 import (
 	"time"
 )
-// OrderResponse struct for OrderResponse
-type OrderResponse struct {
+// Order struct for Order
+type Order struct {
 	Account string `json:"account,omitempty"`
 	AveragePrice float64 `json:"average_price,omitempty"`
 	Cancel string `json:"cancel,omitempty"`

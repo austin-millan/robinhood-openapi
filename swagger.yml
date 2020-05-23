@@ -980,6 +980,8 @@ definitions:
         type: boolean
     title: AccountInfo
   AuthResponse:
+    $ref: '#/definitions/Auth'
+  Auth:
     type: object
     properties:
       mfa_required:
@@ -988,7 +990,6 @@ definitions:
         type: string
       token:
         type: string
-    title: AuthResponse
   BasicInfo:
     type: object
     properties:
@@ -1467,8 +1468,8 @@ definitions:
         items:
           $ref: '#/definitions/WatchListsData'
     title: MultipleOfWatchListsData
-  OrderResponse:
-    type: object
+  Order:
+    type: object      
     properties:
       account:
         type: string
@@ -1536,6 +1537,8 @@ definitions:
       url:
         type: string
     title: OrderResponse
+  OrderResponse:
+    $ref: definitions/Order
   Portfolio:
     type: object
     properties:

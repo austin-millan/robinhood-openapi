@@ -8,8 +8,8 @@
  */
 
 package openapi
-// AuthResponse struct for AuthResponse
-type AuthResponse struct {
+// Auth struct for Auth
+type Auth struct {
 	MfaRequired string `json:"mfa_required,omitempty"`
 	MfaType string `json:"mfa_type,omitempty"`
 	Token string `json:"token,omitempty"`
