@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Account** | **string** |  | [optional] 
 **Action** | [**OrderAction**](OrderAction.md) |  | [optional] 
-**AveragePrice** | **float64** |  | [optional] 
+**AveragePrice** | **string** |  | [optional] 
 **Cancel** | **string** |  | [optional] 
 **ClientId** | **string** |  | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **OverrideDayTradeChecks** | **bool** |  | [optional] 
 **OverrideDtbpChecks** | **bool** |  | [optional] 
 **Position** | **string** |  | [optional] 
-**Price** | **float64** |  | [optional] 
+**Price** | **string** |  | [optional] 
 **Quantity** | **string** |  | [optional] 
 **RejectReason** | **string** |  | [optional] 
 **Side** | **string** |  | [optional] 

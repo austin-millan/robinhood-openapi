@@ -15,7 +15,7 @@ import (
 type Order struct {
 	Account string `json:"account,omitempty"`
 	Action OrderAction `json:"action,omitempty"`
-	AveragePrice float64 `json:"average_price,omitempty"`
+	AveragePrice string `json:"average_price,omitempty"`
 	Cancel string `json:"cancel,omitempty"`
 	ClientId string `json:"client_id,omitempty"`
 	CreatedAt time.Time `json:"created_at,omitempty"`
@@ -29,7 +29,7 @@ type Order struct {
 	OverrideDayTradeChecks bool `json:"override_day_trade_checks,omitempty"`
 	OverrideDtbpChecks bool `json:"override_dtbp_checks,omitempty"`
 	Position string `json:"position,omitempty"`
-	Price float64 `json:"price,omitempty"`
+	Price string `json:"price,omitempty"`
 	Quantity string `json:"quantity,omitempty"`
 	RejectReason string `json:"reject_reason,omitempty"`
 	Side string `json:"side,omitempty"`

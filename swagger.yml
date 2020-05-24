@@ -1476,8 +1476,7 @@ definitions:
       action:
         $ref: '#/definitions/OrderAction'
       average_price:
-        type: number
-        format: double
+        type: string
       cancel:
         type: string
       client_id:
@@ -1509,8 +1508,7 @@ definitions:
       position:
         type: string
       price:
-        type: number
-        format: double
+        type: string
       quantity:
         type: string
       reject_reason:
