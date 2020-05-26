@@ -1,15 +1,16 @@
-swagger: '2.0'
+openapi: 3.0.0
 info:
-  description: Api Documentation
-  version: '1.0'
-  title: Api Documentation
-  termsOfService: 'urn:tos'
-  contact: {}
-  license:
-    name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0'
-host: api.robinhood.com
-basePath: /
+  description: Robinhood API Documentation
+  version: 3.0.1
+  title: Robinhood API
+  contact:
+    email: austin.millan@gmail.com
+servers:
+  - url: http://api.robinhood.com
+  - url: https://api.robinhood.com
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
 tags:
   - name: accounts
     description: Accounts
@@ -33,22 +34,20 @@ tags:
     description: User
   - name: watchlists
     description: Watchlists
-schemes:
-  - https
 paths:
-  /accounts/:
+  "/accounts/":
     get:
       tags:
         - accounts
       summary: getAll
       operationId: getAllUsingGET
-      produces:
-        - '*/*'
       responses:
-        '200':
+        "200":
           description: OK
-          schema:
-            $ref: '#/definitions/MultipleOfAccountInfo'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultipleOfAccountInfo'
         '401':
           description: Unauthorized
         '403':
@@ -62,19 +61,20 @@ paths:
         - accounts
       summary: getPortFolio
       operationId: getPortFolioUsingGET
-      produces:
-        - '*/*'
       parameters:
         - name: accountId
           in: path
           description: accountId
           required: true
-          type: string
+          schema:
+            type: string
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/Portfolio'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Portfolio'
         '401':
           description: Unauthorized
         '403':
@@ -88,24 +88,26 @@ paths:
         - accounts
       summary: getAllPositions
       operationId: getAllPositionsUsingGET
-      produces:
-        - '*/*'
       parameters:
         - name: accountId
           in: path
           description: accountId
           required: true
-          type: string
+          schema:
+            type: string
         - name: nonzero
           in: query
           description: nonzero
           required: false
-          type: boolean
+          schema:
+            type: boolean
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/MultipleOfPosition'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultipleOfPosition'
         '401':
           description: Unauthorized
         '403':
@@ -119,24 +121,26 @@ paths:
         - accounts
       summary: getPosition
       operationId: getPositionUsingGET
-      produces:
-        - '*/*'
       parameters:
         - name: accountId
           in: path
           description: accountId
           required: true
-          type: string
+          schema:
+            type: string
         - name: positionId
           in: path
           description: positionId
           required: true
-          type: string
+          schema:
+            type: string
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/Position'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Position'
         '401':
           description: Unauthorized
         '403':
@@ -150,31 +154,32 @@ paths:
         - authentication
       summary: login
       operationId: loginUsingPOST
-      consumes:
-        - application/x-www-form-urlencoded
-      produces:
-        - '*/*'
       parameters:
-        - in: formData
-          name: mfa_code
+        - name: mfa_code
+          in: header # used to be requestData
           description: mfa_code
           required: false
-          type: string
-        - in: formData
+          schema:
+            type: string
+        - in: header # used to be formData
           name: password
           description: password
           required: true
-          type: string
-        - in: formData
+          schema:
+            type: string
+        - in: header # used to be formData
           name: username
           description: username
           required: true
-          type: string
+          schema:
+            type: string
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/AuthResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
         '201':
           description: Created
         '401':
@@ -190,16 +195,13 @@ paths:
         - authentication
       summary: logout
       operationId: logoutUsingPOST
-      consumes:
-        - application/json
-      produces:
-        - '*/*'
       parameters:
         - name: Authorization
           in: header
           description: Authorization
           required: true
-          type: string
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -218,14 +220,13 @@ paths:
         - dividends
       summary: getDividend
       operationId: getDividendUsingGET
-      produces:
-        - '*/*'
       parameters:
         - name: id
           in: path
           description: id
           required: true
-          type: string
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -242,19 +243,20 @@ paths:
         - fundamentals
       summary: query
       operationId: queryUsingGET
-      produces:
-        - '*/*'
       parameters:
         - name: symbols
           in: query
           description: symbols
           required: false
-          type: string
+          schema:
+            type: string
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/MultipleOfFundamentalsData'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultipleOfFundamentalsData'
         '401':
           description: Unauthorized
         '403':
@@ -268,19 +270,20 @@ paths:
         - fundamentals
       summary: getFundamentals
       operationId: getFundamentalsUsingGET
-      produces:
-        - '*/*'
       parameters:
         - name: symbol
           in: path
           description: symbol
           required: true
-          type: string
+          schema:
+            type: string
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/FundamentalsData'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FundamentalsData'
         '401':
           description: Unauthorized
         '403':
@@ -294,13 +297,13 @@ paths:
         - instruments
       summary: getAll
       operationId: getAllUsingGET_1
-      produces:
-        - '*/*'
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/MultipleOfInstrumentData'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultipleOfInstrumentData'
         '401':
           description: Unauthorized
         '403':
@@ -314,19 +317,20 @@ paths:
         - instruments
       summary: query
       operationId: queryUsingGET_1
-      produces:
-        - '*/*'
       parameters:
         - name: query
           in: query
           description: query
           required: false
-          type: string
+          schema:
+            type: string
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/MultipleOfInstrumentData'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultipleOfInstrumentData'
         '401':
           description: Unauthorized
         '403':
@@ -340,19 +344,20 @@ paths:
         - instruments
       summary: get
       operationId: getUsingGET
-      produces:
-        - '*/*'
       parameters:
         - name: instrument_id
           in: path
           description: instrument_id
           required: true
-          type: string
+          schema:
+            type: string
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/InstrumentData'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstrumentData'
         '401':
           description: Unauthorized
         '403':
@@ -366,19 +371,20 @@ paths:
         - instruments
       summary: getSplits
       operationId: getSplitsUsingGET
-      produces:
-        - '*/*'
       parameters:
         - name: instrument_id
           in: path
           description: instrument_id
           required: true
-          type: string
+          schema:
+            type: string
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/MultipleOfInstrumentSplit'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultipleOfInstrumentSplit'
         '401':
           description: Unauthorized
         '403':
@@ -392,13 +398,13 @@ paths:
         - markets
       summary: getAll
       operationId: getAllUsingGET_2
-      produces:
-        - '*/*'
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/MultipleOfMarketData'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultipleOfMarketData'
         '401':
           description: Unauthorized
         '403':
@@ -412,24 +418,26 @@ paths:
         - markets
       summary: getMArketHours
       operationId: getMArketHoursUsingGET
-      produces:
-        - '*/*'
       parameters:
         - name: date
           in: path
           description: date
           required: true
-          type: string
+          schema:
+            type: string
         - name: mic
           in: path
           description: mic
           required: true
-          type: string
+          schema:
+            type: string
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/MarketHours'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MarketHours'
         '401':
           description: Unauthorized
         '403':
@@ -443,19 +451,20 @@ paths:
         - movers
       summary: getMovers
       operationId: getMoversUsingGET
-      produces:
-        - '*/*'
       parameters:
         - name: direction
           in: query
           description: direction
           required: false
-          type: string
+          schema:
+            type: string
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/MultipleOfMovers'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultipleOfMovers'
         '401':
           description: Unauthorized
         '403':
@@ -469,30 +478,33 @@ paths:
         - order
       summary: getAll
       operationId: getAllUsingGET_3
-      produces:
-        - '*/*'
       parameters:
         - name: cursonr
           in: query
           description: cursonr
           required: false
-          type: string
+          schema:
+            type: string
         - name: instrument
           in: query
           description: instrument
           required: false
-          type: string
+          schema:
+            type: string
         - name: updated_at
           in: query
           description: updated_at
           required: false
-          type: string
-          format: date-time
+          schema:
+            type: string
+            format: date-time
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/MultipleOfOrder'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultipleOfOrder'
         '401':
           description: Unauthorized
         '403':
@@ -505,76 +517,18 @@ paths:
         - order
       summary: placeOrder
       operationId: placeOrderUsingPOST
-      consumes:
-        - application/json
-      produces:
-        - '*/*'
-      parameters:
-        - name: account
-          in: query
-          required: false
-          type: string
-        - name: client_id
-          in: query
-          required: false
-          type: string
-        - name: extended_hours
-          in: query
-          required: false
-          type: boolean
-        - name: instrument
-          in: query
-          required: false
-          type: string
-        - name: override_day_trade_checks
-          in: query
-          required: false
-          type: boolean
-        - name: override_dtbp_checks
-          in: query
-          required: false
-          type: boolean
-        - name: price
-          in: query
-          required: false
-          type: number
-          format: double
-        - name: quantity
-          in: query
-          required: false
-          type: integer
-          format: int32
-        - name: side
-          in: query
-          required: false
-          type: string
-        - name: stop_price
-          in: query
-          required: false
-          type: number
-          format: double
-        - name: symbol
-          in: query
-          required: false
-          type: string
-        - name: time_in_force
-          in: query
-          type: string
-          required: false
-          # $ref: '#/definitions/TimeInForce'
-        - name: trigger
-          in: query
-          required: false
-          type: string
-        - name: type
-          in: query
-          required: false
-          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/OrderResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
         '201':
           description: Created
         '401':
@@ -590,19 +544,20 @@ paths:
         - order
       summary: getOrder
       operationId: getOrderUsingGET
-      produces:
-        - '*/*'
       parameters:
         - name: order_id
           in: path
           description: order_id
           required: true
-          type: string
+          schema:
+            type: string
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/OrderResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
         '401':
           description: Unauthorized
         '403':
@@ -616,21 +571,20 @@ paths:
         - order
       summary: cancel
       operationId: cancelUsingPOST
-      consumes:
-        - application/json
-      produces:
-        - '*/*'
       parameters:
         - name: order_id
           in: path
           description: order_id
           required: true
-          type: string
+          schema:
+            type: string
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/OrderResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
         '201':
           description: Created
         '401':
@@ -646,20 +600,21 @@ paths:
         - quote
       summary: getQuotes
       operationId: getQuotesUsingGET
-      produces:
-        - '*/*'
       parameters:
         - name: symbols
           in: query
           description: symbols
           required: false
-          type: string
-          default: 'TSLA,AMD'
+          schema:
+            type: string
+            example: 'TSLA,AMD'
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/MultipleOfQuoteData'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultipleOfQuoteData'
         '401':
           description: Unauthorized
         '403':
@@ -673,19 +628,20 @@ paths:
         - quote
       summary: getQuote
       operationId: getQuoteUsingGET
-      produces:
-        - '*/*'
       parameters:
         - name: symbol
           in: path
           description: symbol
           required: true
-          type: string
+          schema:
+            type: string
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/QuoteData'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuoteData'
         '401':
           description: Unauthorized
         '403':
@@ -699,13 +655,13 @@ paths:
         - user
       summary: getUser
       operationId: getUserUsingGET
-      produces:
-        - '*/*'
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/UserInfo'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInfo'
         '401':
           description: Unauthorized
         '403':
@@ -719,13 +675,13 @@ paths:
         - user
       summary: getBasicInfo
       operationId: getBasicInfoUsingGET
-      produces:
-        - '*/*'
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/BasicInfo'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicInfo'
         '401':
           description: Unauthorized
         '403':
@@ -739,13 +695,13 @@ paths:
         - user
       summary: getUserId
       operationId: getUserIdUsingGET
-      produces:
-        - '*/*'
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/UserId'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserId'
         '401':
           description: Unauthorized
         '403':
@@ -759,13 +715,13 @@ paths:
         - user
       summary: getInvestmentProfile
       operationId: getInvestmentProfileUsingGET
-      produces:
-        - '*/*'
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/InvestmentProfile'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvestmentProfile'
         '401':
           description: Unauthorized
         '403':
@@ -779,13 +735,13 @@ paths:
         - watchlists
       summary: getAll
       operationId: getAllUsingGET_4
-      produces:
-        - '*/*'
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/MultipleOfWatchListCreateResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultipleOfWatchListCreateResponse'
         '401':
           description: Unauthorized
         '403':
@@ -798,21 +754,20 @@ paths:
         - watchlists
       summary: create
       operationId: createUsingPOST
-      consumes:
-        - application/json
-      produces:
-        - '*/*'
       parameters:
         - name: name
           in: query
           description: name
           required: false
-          type: string
+          schema:
+            type: string
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/WatchListCreateResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WatchListCreateResponse'
         '201':
           description: Created
         '401':
@@ -828,23 +783,20 @@ paths:
         - watchlists
       summary: add
       operationId: addUsingPOST
-      consumes:
-        - application/json
-      produces:
-        - '*/*'
       parameters:
         - name: symbols
           in: query
           description: symbols
           required: false
-          type: string
+          schema:
+            type: string
       responses:
         '200':
           description: OK
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/WatchListsData'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WatchListsData'
         '201':
           description: Created
         '401':
@@ -860,19 +812,20 @@ paths:
         - watchlists
       summary: get
       operationId: getUsingGET_1
-      produces:
-        - '*/*'
       parameters:
         - name: name
           in: path
           description: name
           required: true
-          type: string
+          schema:
+            type: string
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/MultipleOfWatchListsData'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultipleOfWatchListsData'
         '401':
           description: Unauthorized
         '403':
@@ -886,24 +839,26 @@ paths:
         - watchlists
       summary: delete
       operationId: deleteUsingDELETE
-      produces:
-        - '*/*'
       parameters:
         - name: instrumentId
           in: path
           description: instrumentId
           required: true
-          type: string
+          schema:
+            type: string
         - name: name
           in: path
           description: name
           required: true
-          type: string
+          schema:
+            type: string
       responses:
         '200':
           description: OK
-          schema:
-            $ref: '#/definitions/MultipleOfWatchListsData'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultipleOfWatchListsData'
         '204':
           description: No Content
         '401':
@@ -911,934 +866,934 @@ paths:
         '403':
           description: Forbidden
       deprecated: false
-securityDefinitions:
-  Token:
-    type: apiKey
-    name: Authorization
-    in: header
-definitions:
-  AccountInfo:
-    type: object
-    properties:
-      account_number:
-        type: string
-      buying_power:
-        type: number
-        format: double
-      cash:
-        type: number
-        format: double
-      cash_available_for_withdrawal:
-        type: number
-        format: double
-      cash_balances:
-        $ref: '#/definitions/CashBalances'
-      cash_held_for_orders:
-        type: number
-        format: double
-      created_at:
-        type: string
-        format: date-time
-      deactivated:
-        type: boolean
-      deposit_halted:
-        type: boolean
-      margin_balances:
-        $ref: '#/definitions/MarginBalances'
-      max_ach_early_access_amount:
-        type: number
-        format: double
-      only_position_closing_trades:
-        type: boolean
-      portfolio:
-        type: string
-      positions:
-        type: string
-      sma:
-        type: number
-        format: double
-      sma_held_for_orders:
-        type: number
-        format: double
-      sweep_enabled:
-        type: boolean
-      type:
-        $ref: '#/definitions/AccountType'
-      uncleared_deposits:
-        type: number
-        format: double
-      unsettled_funds:
-        type: number
-        format: double
-      updated_at:
-        type: string
-        format: date-time
-      url:
-        type: string
-      user:
-        type: string
-      withdrawal_halted:
-        type: boolean
-    title: AccountInfo
-  AuthResponse:
-    $ref: '#/definitions/Auth'
-  Auth:
-    type: object
-    properties:
-      mfa_required:
-        type: string
-      mfa_type:
-        type: string
-      token:
-        type: string
-  BasicInfo:
-    type: object
-    properties:
-      address:
-        type: string
-      citizenship:
-        type: string
-      city:
-        type: string
-      country_of_residence:
-        type: string
-      date_of_birth:
-        type: string
-      marital_status:
-        $ref: '#/definitions/MaritalStatus'
-      number_dependents:
-        type: integer
-        format: int32
-      phone_number:
-        type: string
-      state:
-        type: string
-      tax_id_ssn:
-        type: string
-      updated_at:
-        type: string
-        format: date-time
-      user:
-        type: string
-      zipcode:
-        type: string
-    title: BasicInfo
-  CashBalances:
-    type: object
-    properties:
-      buying_power:
-        type: number
-        format: double
-      cash:
-        type: number
-        format: double
-      cash_available_for_withdrawal:
-        type: number
-        format: double
-      cash_held_for_orders:
-        type: number
-        format: double
-      created_at:
-        type: string
-        format: date-time
-      uncleared_deposits:
-        type: number
-        format: double
-      unsettled_funds:
-        type: number
-        format: double
-      updated_at:
-        type: string
-        format: date-time
-    title: CashBalances
-  Execution:
-    type: object
-    properties:
-      id:
-        type: string
-      price:
-        type: number
-        format: double
-      quantity:
-        type: number
-        format: double
-      settlement_date:
-        type: string
-        format: date
-      timestamp:
-        type: string
-        format: date-time
-    title: Execution
-  FundamentalsData:
-    type: object
-    properties:
-      average_volume:
-        type: number
-        format: double
-      description:
-        type: string
-      dividend_yield:
-        type: number
-        format: double
-      high:
-        type: number
-        format: double
-      high_52_weeks:
-        type: number
-        format: double
-      instrument:
-        type: string
-      low:
-        type: number
-        format: double
-      low_52_weeks:
-        type: number
-        format: double
-      market_cap:
-        type: number
-        format: double
-      open:
-        type: number
-        format: double
-      pe_ratio:
-        type: number
-        format: double
-      volume:
-        type: number
-        format: double
-    title: FundamentalsData
-  InstrumentData:
-    type: object
-    properties:
-      bloomberg_unique:
-        type: string
-      country:
-        type: string
-      day_trade_ratio:
-        type: number
-        format: double
-      fundamentals:
-        type: string
-      id:
-        type: string
-      list_date:
-        type: string
-      maintenance_ratio:
-        type: number
-        format: double
-      margin_initial_ratio:
-        type: number
-        format: double
-      market:
-        type: string
-      min_tick_size:
-        type: number
-        format: double
-      name:
-        type: string
-      quote:
-        type: string
-      simple_name:
-        type: string
-      splits:
-        type: string
-      state:
-        $ref: '#/definitions/InstrumentState'
-      symbol:
-        type: string
-      tradability:
-        type: string
-      tradeable:
-        type: string
-      type:
-        type: string
-      url:
-        type: string
-    title: InstrumentData
-  InstrumentSplit:
-    type: object
-    properties:
-      divisor:
-        type: string
-      execution_date:
-        type: string
-      instrument:
-        type: string
-      multiplier:
-        type: string
-      url:
-        type: string
-    title: InstrumentSplit
-  InvestmentProfile:
-    type: object
-    properties:
-      annual_income:
-        type: string
-      investment_experience:
-        $ref: '#/definitions/InvestmentExperience'
-      investment_objective:
-        $ref: '#/definitions/InvestmentObjective'
-      liquid_net_worth:
-        type: string
-      liquidity_needs:
-        $ref: '#/definitions/LiquidityNeeds'
-      risk_tolerance:
-        $ref: '#/definitions/RiskTolerance'
-      source_of_funds:
-        $ref: '#/definitions/SourceOfFunds'
-      suitability_verified:
-        type: boolean
-      tax_bracket:
-        $ref: '#/definitions/TaxBracket'
-      time_horizon:
-        $ref: '#/definitions/TimeHorizon'
-      total_net_worth:
-        $ref: '#/definitions/TotalNetWorth'
-      updated_at:
-        type: string
-        format: date-time
-      user:
-        type: string
-    title: InvestmentProfile
-  MarginBalances:
-    type: object
-    properties:
-      cash:
-        type: number
-        format: double
-      cash_available_for_withdrawal:
-        type: number
-        format: double
-      cash_held_for_orders:
-        type: number
-        format: double
-      created_at:
-        type: string
-        format: date-time
-      day_trade_buying_power:
-        type: number
-        format: double
-      day_trade_buying_power_held_for_orders:
-        type: number
-        format: double
-      day_trade_ratio:
-        type: number
-        format: double
-      margin_limit:
-        type: number
-        format: double
-      marked_pattern_day_trader_date:
-        type: string
-        format: date-time
-      overnight_buying_power:
-        type: number
-        format: double
-      overnight_buying_power_held_for_orders:
-        type: number
-        format: double
-      overnight_ratio:
-        type: number
-        format: double
-      unallocated_margin_cash:
-        type: number
-        format: double
-      uncleared_deposits:
-        type: number
-        format: double
-      unsettled_funds:
-        type: number
-        format: double
-      updated_at:
-        type: string
-        format: date-time
-    title: MarginBalances
-  MarketData:
-    type: object
-    properties:
-      acronym:
-        type: string
-      city:
-        type: string
-      country:
-        type: string
-      mic:
-        type: string
-      name:
-        type: string
-      operating_mic:
-        type: string
-      timezone:
-        type: string
-      todays_hours:
-        type: string
-      url:
-        type: string
-      website:
-        type: string
-    title: MarketData
-  MarketHours:
-    type: object
-    properties:
-      closes_at:
-        type: string
-        format: date-time
-      date:
-        type: string
-        format: date-time
-      extended_closes_at:
-        type: string
-        format: date-time
-      extended_opens_at:
-        type: string
-        format: date-time
-      is_open:
-        type: boolean
-      next_open_hours:
-        type: string
-      opens_at:
-        type: string
-        format: date-time
-      previous_open_hours:
-        type: string
-    title: MarketHours
-  Movers:
-    type: object
-    title: Movers
-  MultipleOfAccountInfo:
-    type: object
-    properties:
-      count:
-        type: integer
-        format: int32
-      next:
-        type: string
-      previous:
-        type: string
-      results:
-        type: array
-        items:
-          $ref: '#/definitions/AccountInfo'
-    title: MultipleOfAccountInfo
-  MultipleOfFundamentalsData:
-    type: object
-    properties:
-      count:
-        type: integer
-        format: int32
-      next:
-        type: string
-      previous:
-        type: string
-      results:
-        type: array
-        items:
-          $ref: '#/definitions/FundamentalsData'
-    title: MultipleOfFundamentalsData
-  MultipleOfInstrumentData:
-    type: object
-    properties:
-      count:
-        type: integer
-        format: int32
-      next:
-        type: string
-      previous:
-        type: string
-      results:
-        type: array
-        items:
-          $ref: '#/definitions/InstrumentData'
-    title: MultipleOfInstrumentData
-  MultipleOfInstrumentSplit:
-    type: object
-    properties:
-      count:
-        type: integer
-        format: int32
-      next:
-        type: string
-      previous:
-        type: string
-      results:
-        type: array
-        items:
-          $ref: '#/definitions/InstrumentSplit'
-    title: MultipleOfInstrumentSplit
-  MultipleOfMarketData:
-    type: object
-    properties:
-      count:
-        type: integer
-        format: int32
-      next:
-        type: string
-      previous:
-        type: string
-      results:
-        type: array
-        items:
-          $ref: '#/definitions/MarketData'
-    title: MultipleOfMarketData
-  MultipleOfMovers:
-    type: object
-    properties:
-      count:
-        type: integer
-        format: int32
-      next:
-        type: string
-      previous:
-        type: string
-      results:
-        type: array
-        items:
-          $ref: '#/definitions/Movers'
-    title: MultipleOfMovers
-  MultipleOfOrder:
-    type: object
-    properties:
-      count:
-        type: integer
-        format: int32
-      next:
-        type: string
-      previous:
-        type: string
-      results:
-        type: array
-        items:
-          $ref: '#/definitions/Order'
-  MultipleOfPosition:
-    type: object
-    properties:
-      count:
-        type: integer
-        format: int32
-      next:
-        type: string
-      previous:
-        type: string
-      results:
-        type: array
-        items:
-          $ref: '#/definitions/Position'
-    title: MultipleOfPosition
-  MultipleOfQuoteData:
-    type: object
-    properties:
-      count:
-        type: integer
-        format: int32
-      next:
-        type: string
-      previous:
-        type: string
-      results:
-        type: array
-        items:
-          $ref: '#/definitions/QuoteData'
-    title: MultipleOfQuoteData
-  MultipleOfWatchListCreateResponse:
-    type: object
-    properties:
-      count:
-        type: integer
-        format: int32
-      next:
-        type: string
-      previous:
-        type: string
-      results:
-        type: array
-        items:
-          $ref: '#/definitions/WatchListCreateResponse'
-    title: MultipleOfWatchListCreateResponse
-  MultipleOfWatchListsData:
-    type: object
-    properties:
-      count:
-        type: integer
-        format: int32
-      next:
-        type: string
-      previous:
-        type: string
-      results:
-        type: array
-        items:
-          $ref: '#/definitions/WatchListsData'
-    title: MultipleOfWatchListsData
-  Order:
-    type: object      
-    properties:
-      account:
-        type: string
-      action:
-        $ref: '#/definitions/OrderAction'
-      average_price:
-        type: string
-      cancel:
-        type: string
-      client_id:
-        type: string
-      created_at:
-        type: string
-        format: date-time
-      cumulative_quantity:
-        type: string
-      executions:
-        type: array
-        items:
-          $ref: '#/definitions/Execution'
-      extended_hours:
-        type: boolean
-      fees:
-        type: string
-      id:
-        type: string
-      instrument:
-        type: string
-      last_transaction_at:
-        type: string
-        format: date-time
-      override_day_trade_checks:
-        type: boolean
-      override_dtbp_checks:
-        type: boolean
-      position:
-        type: string
-      price:
-        type: string
-      quantity:
-        type: string
-      reject_reason:
-        type: string
-      side:
-        type: string
-      state:
-        $ref: '#/definitions/OrderState'
-      stop_price:
-        type: string
-      symbol:
-        type: string
-      time_in_force:
-        $ref: '#/definitions/TimeInForce'
-      trigger:
-        type: string
-      type:
-        $ref: '#/definitions/ExecutionType'
-      updated_at:
-        type: string
-        format: date-time
-      url:
-        type: string
-      last_trail_price:
-        type: string
-      last_trail_price_updated_at:
-        type: string
-      stop_triggered_at:
-        type: string
-    title: Order
-  OrderResponse:
-    $ref: '#/definitions/Order'
-  Portfolio:
-    type: object
-    properties:
-      account:
-        type: string
-      adjusted_equity_previous_close:
-        type: number
-        format: double
-      equity:
-        type: number
-        format: double
-      equity_previous_close:
-        type: number
-        format: double
-      excess_maintenance:
-        type: number
-        format: double
-      excess_maintenance_with_uncleared_deposits:
-        type: number
-        format: double
-      excess_margin:
-        type: number
-        format: double
-      excess_margin_with_uncleared_deposits:
-        type: number
-        format: double
-      extended_hours_equity:
-        type: number
-        format: double
-      extended_hours_market_value:
-        type: number
-        format: double
-      last_core_equity:
-        type: number
-        format: double
-      last_core_market_value:
-        type: number
-        format: double
-      market_value:
-        type: number
-        format: double
-      start_date:
-        type: string
-      unwithdrawable_deposits:
-        type: number
-        format: double
-      unwithdrawable_grants:
-        type: number
-        format: double
-      url:
-        type: string
-      withdrawable_amount:
-        type: number
-        format: double
-    title: Portfolio
-  Position:
-    type: object
-    properties:
-      account:
-        type: string
-      average_buy_price:
-        type: number
-        format: double
-      created_at:
-        type: string
-        format: date-time
-      instrument:
-        type: string
-      intraday_average_buy_price:
-        type: number
-        format: double
-      intraday_quantity:
-        type: number
-        format: double
-      quantity:
-        type: number
-        format: double
-      shares_held_for_buys:
-        type: number
-        format: double
-      shares_held_for_sells:
-        type: number
-        format: double
-      shares_held_for_stock_grants:
-        type: number
-        format: double
-      updated_at:
-        type: string
-        format: date-time
-      url:
-        type: string
-    title: Position
-  QuoteData:
-    type: object
-    properties:
-      adjusted_previous_close:
-        type: string
-      ask_price:
-        type: string
-      ask_size:
-        type: integer
-        format: int32
-      bid_price:
-        type: number
-        format: double
-      bid_size:
-        type: integer
-        format: int32
-      last_extended_hours_trade_price:
-        type: string
-      last_trade_price:
-        type: string
-      previous_close:
-        type: string
-      previous_close_date:
-        type: string
-        format: date
-      symbol:
-        type: string
-      trading_halted:
-        type: boolean
-      updated_at:
-        type: string
-        format: date-time
-    title: QuoteData
-  UserId:
-    type: object
-    properties:
-      id:
-        type: string
-      url:
-        type: string
-      username:
-        type: string
-    title: UserId
-  UserInfo:
-    type: object
-    properties:
-      additional_info:
-        type: string
-      basic_info:
-        type: string
-      email:
-        type: string
-      employment:
-        type: string
-      first_name:
-        type: string
-      id:
-        type: string
-      id_info:
-        type: string
-      international_info:
-        type: string
-      investment_profile:
-        type: string
-      last_name:
-        type: string
-      url:
-        type: string
-      username:
-        type: string
-    title: UserInfo
-  WatchListCreateResponse:
-    type: object
-    properties:
-      name:
-        type: string
-      url:
-        type: string
-      user:
-        type: string
-    title: WatchListCreateResponse
-  WatchListsData:
-    type: object
-    properties:
-      created_at:
-        type: string
-      instrument:
-        type: string
-      url:
-        type: string
-      watchlist:
-        type: string
-    title: WatchListsData
-  OrderState:
-    type: string
-    enum:
-      - queued
-      - unconfirmed
-      - confirmed
-      - partially_filled
-      - filled
-      - rejected
-      - canceled
-      - failed
-  InstrumentState:
-    type: string
-    enum:
-      - active
-      - inactive
-  AccountType:
-    title: type
-    type: string
-    enum:
-      - cash
-      - margin
-  MaritalStatus:
-    type: string
-    enum:
-      - single
-      - married
-  InvestmentExperience:
-    type: string
-    enum:
-      - extensive_investment_exp
-      - good_investment_exp
-      - limited_investment_exp
-      - no_investment_exp
-  InvestmentObjective:
-    type: string
-    enum:
-      - cap_preserve_invest_obj
-      - income_invest_obj
-      - growth_invest_obj
-      - speculation_invest_obj
-      - other_invest_obj
-  LiquidityNeeds:
-    type: string
-    enum:
-      - not_important_liq_need
-      - somewhat_important_liq_need
-      - very_important_liq_need
-  RiskTolerance:
-    type: string
-    enum:
-      - low_risk_tolerance
-      - med_risk_tolerance
-      - high_risk_tolerance
-  SourceOfFunds:
-    type: string
-    enum:
-      - savings_personal_income
-      - pension_retirement
-      - insurance_payout
-      - inheritance
-      - gift
-      - sale_business_or_property
-      - other
-  TaxBracket:
-    type: string
-    enum:
-      - 0_pct
-      - 20_pct
-      - 25_pct
-      - 28_pct
-      - 33_pct
-      - 35_pct
-      - 39_6_pct
-  TimeHorizon:
-    type: string
-    enum:
-      - short_time_horizon
-      - med_time_horizon
-      - long_time_horizon
-  TotalNetWorth:
-    type: string
-    enum:
-      - "0_24999"
-      - "25000_49999"
-      - "50000_64999"
-      - "65000_99999"
-      - "100000_149999"
-      - "150000_199999"
-      - "250000_499999"
-      - "500000_999999"
-      - "1000000_inf"
-  ExecutionType:
-    type: string
-    enum:
-      - market
-      - limit
-  Trigger:
-    type: string
-    enum:
-      - immediate
-      - stop
-  TimeInForce:
+components:
+  schemas:
+    # Token:
+    #   type: apiKey
+    #   name: Authorization
+    #   in: header
+    AccountInfo:
+      type: object
+      properties:
+        account_number:
+          type: string
+        buying_power:
+          type: number
+          format: double
+        cash:
+          type: number
+          format: double
+        cash_available_for_withdrawal:
+          type: number
+          format: double
+        cash_balances:
+          $ref: '#/components/schemas/CashBalances'
+        cash_held_for_orders:
+          type: number
+          format: double
+        created_at:
+          type: string
+          format: date-time
+        deactivated:
+          type: boolean
+        deposit_halted:
+          type: boolean
+        margin_balances:
+          $ref: '#/components/schemas/MarginBalances'
+        max_ach_early_access_amount:
+          type: number
+          format: double
+        only_position_closing_trades:
+          type: boolean
+        portfolio:
+          type: string
+        positions:
+          type: string
+        sma:
+          type: number
+          format: double
+        sma_held_for_orders:
+          type: number
+          format: double
+        sweep_enabled:
+          type: boolean
+        type:
+          $ref: '#/components/schemas/AccountType'
+        uncleared_deposits:
+          type: number
+          format: double
+        unsettled_funds:
+          type: number
+          format: double
+        updated_at:
+          type: string
+          format: date-time
+        url:
+          type: string
+        user:
+          type: string
+        withdrawal_halted:
+          type: boolean
+      title: AccountInfo
+    AuthResponse:
+      $ref: '#/components/schemas/Auth'
+    Auth:
+      type: object
+      properties:
+        mfa_required:
+          type: string
+        mfa_type:
+          type: string
+        token:
+          type: string
+    BasicInfo:
+      type: object
+      properties:
+        address:
+          type: string
+        citizenship:
+          type: string
+        city:
+          type: string
+        country_of_residence:
+          type: string
+        date_of_birth:
+          type: string
+        marital_status:
+          $ref: '#/components/schemas/MaritalStatus'
+        number_dependents:
+          type: integer
+          format: int32
+        phone_number:
+          type: string
+        state:
+          type: string
+        tax_id_ssn:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+        user:
+          type: string
+        zipcode:
+          type: string
+      title: BasicInfo
+    CashBalances:
+      type: object
+      properties:
+        buying_power:
+          type: number
+          format: double
+        cash:
+          type: number
+          format: double
+        cash_available_for_withdrawal:
+          type: number
+          format: double
+        cash_held_for_orders:
+          type: number
+          format: double
+        created_at:
+          type: string
+          format: date-time
+        uncleared_deposits:
+          type: number
+          format: double
+        unsettled_funds:
+          type: number
+          format: double
+        updated_at:
+          type: string
+          format: date-time
+      title: CashBalances
+    Execution:
+      type: object
+      properties:
+        id:
+          type: string
+        price:
+          type: number
+          format: double
+        quantity:
+          type: number
+          format: double
+        settlement_date:
+          type: string
+          format: date
+        timestamp:
+          type: string
+          format: date-time
+      title: Execution
+    FundamentalsData:
+      type: object
+      properties:
+        average_volume:
+          type: number
+          format: double
+        description:
+          type: string
+        dividend_yield:
+          type: number
+          format: double
+        high:
+          type: number
+          format: double
+        high_52_weeks:
+          type: number
+          format: double
+        instrument:
+          type: string
+        low:
+          type: number
+          format: double
+        low_52_weeks:
+          type: number
+          format: double
+        market_cap:
+          type: number
+          format: double
+        open:
+          type: number
+          format: double
+        pe_ratio:
+          type: number
+          format: double
+        volume:
+          type: number
+          format: double
+      title: FundamentalsData
+    InstrumentData:
+      type: object
+      properties:
+        bloomberg_unique:
+          type: string
+        country:
+          type: string
+        day_trade_ratio:
+          type: number
+          format: double
+        fundamentals:
+          type: string
+        id:
+          type: string
+        list_date:
+          type: string
+        maintenance_ratio:
+          type: number
+          format: double
+        margin_initial_ratio:
+          type: number
+          format: double
+        market:
+          type: string
+        min_tick_size:
+          type: number
+          format: double
+        name:
+          type: string
+        quote:
+          type: string
+        simple_name:
+          type: string
+        splits:
+          type: string
+        state:
+          $ref: '#/components/schemas/InstrumentState'
+        symbol:
+          type: string
+        tradability:
+          type: string
+        tradeable:
+          type: string
+        type:
+          type: string
+        url:
+          type: string
+      title: InstrumentData
+    InstrumentSplit:
+      type: object
+      properties:
+        divisor:
+          type: string
+        execution_date:
+          type: string
+        instrument:
+          type: string
+        multiplier:
+          type: string
+        url:
+          type: string
+      title: InstrumentSplit
+    InvestmentProfile:
+      type: object
+      properties:
+        annual_income:
+          type: string
+        investment_experience:
+          $ref: '#/components/schemas/InvestmentExperience'
+        investment_objective:
+          $ref: '#/components/schemas/InvestmentObjective'
+        liquid_net_worth:
+          type: string
+        liquidity_needs:
+          $ref: '#/components/schemas/LiquidityNeeds'
+        risk_tolerance:
+          $ref: '#/components/schemas/RiskTolerance'
+        source_of_funds:
+          $ref: '#/components/schemas/SourceOfFunds'
+        suitability_verified:
+          type: boolean
+        tax_bracket:
+          $ref: '#/components/schemas/TaxBracket'
+        time_horizon:
+          $ref: '#/components/schemas/TimeHorizon'
+        total_net_worth:
+          $ref: '#/components/schemas/TotalNetWorth'
+        updated_at:
+          type: string
+          format: date-time
+        user:
+          type: string
+      title: InvestmentProfile
+    MarginBalances:
+      type: object
+      properties:
+        cash:
+          type: number
+          format: double
+        cash_available_for_withdrawal:
+          type: number
+          format: double
+        cash_held_for_orders:
+          type: number
+          format: double
+        created_at:
+          type: string
+          format: date-time
+        day_trade_buying_power:
+          type: number
+          format: double
+        day_trade_buying_power_held_for_orders:
+          type: number
+          format: double
+        day_trade_ratio:
+          type: number
+          format: double
+        margin_limit:
+          type: number
+          format: double
+        marked_pattern_day_trader_date:
+          type: string
+          format: date-time
+        overnight_buying_power:
+          type: number
+          format: double
+        overnight_buying_power_held_for_orders:
+          type: number
+          format: double
+        overnight_ratio:
+          type: number
+          format: double
+        unallocated_margin_cash:
+          type: number
+          format: double
+        uncleared_deposits:
+          type: number
+          format: double
+        unsettled_funds:
+          type: number
+          format: double
+        updated_at:
+          type: string
+          format: date-time
+      title: MarginBalances
+    MarketData:
+      type: object
+      properties:
+        acronym:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        mic:
+          type: string
+        name:
+          type: string
+        operating_mic:
+          type: string
+        timezone:
+          type: string
+        todays_hours:
+          type: string
+        url:
+          type: string
+        website:
+          type: string
+      title: MarketData
+    MarketHours:
+      type: object
+      properties:
+        closes_at:
+          type: string
+          format: date-time
+        date:
+          type: string
+          format: date-time
+        extended_closes_at:
+          type: string
+          format: date-time
+        extended_opens_at:
+          type: string
+          format: date-time
+        is_open:
+          type: boolean
+        next_open_hours:
+          type: string
+        opens_at:
+          type: string
+          format: date-time
+        previous_open_hours:
+          type: string
+      title: MarketHours
+    Movers:
+      type: object
+      title: Movers
+    MultipleOfAccountInfo:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountInfo'
+      title: MultipleOfAccountInfo
+    MultipleOfFundamentalsData:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/FundamentalsData'
+      title: MultipleOfFundamentalsData
+    MultipleOfInstrumentData:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/InstrumentData'
+      title: MultipleOfInstrumentData
+    MultipleOfInstrumentSplit:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/InstrumentSplit'
+      title: MultipleOfInstrumentSplit
+    MultipleOfMarketData:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/MarketData'
+      title: MultipleOfMarketData
+    MultipleOfMovers:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Movers'
+      title: MultipleOfMovers
+    MultipleOfOrder:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+    MultipleOfPosition:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Position'
+      title: MultipleOfPosition
+    MultipleOfQuoteData:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuoteData'
+      title: MultipleOfQuoteData
+    MultipleOfWatchListCreateResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WatchListCreateResponse'
+      title: MultipleOfWatchListCreateResponse
+    MultipleOfWatchListsData:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WatchListsData'
+      title: MultipleOfWatchListsData
+    Order:
+      type: object      
+      properties:
+        account:
+          type: string
+        action:
+          $ref: '#/components/schemas/OrderAction'
+        average_price:
+          type: string
+        cancel:
+          type: string
+        client_id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        cumulative_quantity:
+          type: string
+        executions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Execution'
+        extended_hours:
+          type: boolean
+        fees:
+          type: string
+        id:
+          type: string
+        instrument:
+          type: string
+        last_transaction_at:
+          type: string
+          format: date-time
+        override_day_trade_checks:
+          type: boolean
+        override_dtbp_checks:
+          type: boolean
+        position:
+          type: string
+        price:
+          type: string
+        quantity:
+          type: string
+        reject_reason:
+          type: string
+        side:
+          type: string
+        state:
+          $ref: '#/components/schemas/OrderState'
+        stop_price:
+          type: string
+        symbol:
+          type: string
+        time_in_force:
+          $ref: '#/components/schemas/TimeInForce'
+        trigger:
+          type: string
+        type:
+          $ref: '#/components/schemas/ExecutionType'
+        updated_at:
+          type: string
+          format: date-time
+        url:
+          type: string
+        last_trail_price:
+          type: string
+        last_trail_price_updated_at:
+          type: string
+        stop_triggered_at:
+          type: string
+      title: Order
+    OrderResponse:
+      $ref: '#/components/schemas/Order'
+    Portfolio:
+      type: object
+      properties:
+        account:
+          type: string
+        adjusted_equity_previous_close:
+          type: number
+          format: double
+        equity:
+          type: number
+          format: double
+        equity_previous_close:
+          type: number
+          format: double
+        excess_maintenance:
+          type: number
+          format: double
+        excess_maintenance_with_uncleared_deposits:
+          type: number
+          format: double
+        excess_margin:
+          type: number
+          format: double
+        excess_margin_with_uncleared_deposits:
+          type: number
+          format: double
+        extended_hours_equity:
+          type: number
+          format: double
+        extended_hours_market_value:
+          type: number
+          format: double
+        last_core_equity:
+          type: number
+          format: double
+        last_core_market_value:
+          type: number
+          format: double
+        market_value:
+          type: number
+          format: double
+        start_date:
+          type: string
+        unwithdrawable_deposits:
+          type: number
+          format: double
+        unwithdrawable_grants:
+          type: number
+          format: double
+        url:
+          type: string
+        withdrawable_amount:
+          type: number
+          format: double
+      title: Portfolio
+    Position:
+      type: object
+      properties:
+        account:
+          type: string
+        average_buy_price:
+          type: number
+          format: double
+        created_at:
+          type: string
+          format: date-time
+        instrument:
+          type: string
+        intraday_average_buy_price:
+          type: number
+          format: double
+        intraday_quantity:
+          type: number
+          format: double
+        quantity:
+          type: number
+          format: double
+        shares_held_for_buys:
+          type: number
+          format: double
+        shares_held_for_sells:
+          type: number
+          format: double
+        shares_held_for_stock_grants:
+          type: number
+          format: double
+        updated_at:
+          type: string
+          format: date-time
+        url:
+          type: string
+      title: Position
+    QuoteData:
+      type: object
+      properties:
+        adjusted_previous_close:
+          type: string
+        ask_price:
+          type: string
+        ask_size:
+          type: integer
+          format: int32
+        bid_price:
+          type: number
+          format: double
+        bid_size:
+          type: integer
+          format: int32
+        last_extended_hours_trade_price:
+          type: string
+        last_trade_price:
+          type: string
+        previous_close:
+          type: string
+        previous_close_date:
+          type: string
+          format: date
+        symbol:
+          type: string
+        trading_halted:
+          type: boolean
+        updated_at:
+          type: string
+          format: date-time
+      title: QuoteData
+    UserId:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        username:
+          type: string
+      title: UserId
+    UserInfo:
+      type: object
+      properties:
+        additional_info:
+          type: string
+        basic_info:
+          type: string
+        email:
+          type: string
+        employment:
+          type: string
+        first_name:
+          type: string
+        id:
+          type: string
+        id_info:
+          type: string
+        international_info:
+          type: string
+        investment_profile:
+          type: string
+        last_name:
+          type: string
+        url:
+          type: string
+        username:
+          type: string
+      title: UserInfo
+    WatchListCreateResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+        user:
+          type: string
+      title: WatchListCreateResponse
+    WatchListsData:
+      type: object
+      properties:
+        created_at:
+          type: string
+        instrument:
+          type: string
+        url:
+          type: string
+        watchlist:
+          type: string
+      title: WatchListsData
+    OrderState:
       type: string
       enum:
-        - gfd
-        - gtc
-        - ioc
-        - opg
-  OrderAction:
+        - queued
+        - unconfirmed
+        - confirmed
+        - partially_filled
+        - filled
+        - rejected
+        - canceled
+        - failed
+    InstrumentState:
       type: string
       enum:
-        - order
-        - status
-        - cancel
-        - history
+        - active
+        - inactive
+    AccountType:
+      title: type
+      type: string
+      enum:
+        - cash
+        - margin
+    MaritalStatus:
+      type: string
+      enum:
+        - single
+        - married
+    InvestmentExperience:
+      type: string
+      enum:
+        - extensive_investment_exp
+        - good_investment_exp
+        - limited_investment_exp
+        - no_investment_exp
+    InvestmentObjective:
+      type: string
+      enum:
+        - cap_preserve_invest_obj
+        - income_invest_obj
+        - growth_invest_obj
+        - speculation_invest_obj
+        - other_invest_obj
+    LiquidityNeeds:
+      type: string
+      enum:
+        - not_important_liq_need
+        - somewhat_important_liq_need
+        - very_important_liq_need
+    RiskTolerance:
+      type: string
+      enum:
+        - low_risk_tolerance
+        - med_risk_tolerance
+        - high_risk_tolerance
+    SourceOfFunds:
+      type: string
+      enum:
+        - savings_personal_income
+        - pension_retirement
+        - insurance_payout
+        - inheritance
+        - gift
+        - sale_business_or_property
+        - other
+    TaxBracket:
+      type: string
+      enum:
+        - 0_pct
+        - 20_pct
+        - 25_pct
+        - 28_pct
+        - 33_pct
+        - 35_pct
+        - 39_6_pct
+    TimeHorizon:
+      type: string
+      enum:
+        - short_time_horizon
+        - med_time_horizon
+        - long_time_horizon
+    TotalNetWorth:
+      type: string
+      enum:
+        - "0_24999"
+        - "25000_49999"
+        - "50000_64999"
+        - "65000_99999"
+        - "100000_149999"
+        - "150000_199999"
+        - "250000_499999"
+        - "500000_999999"
+        - "1000000_inf"
+    ExecutionType:
+      type: string
+      enum:
+        - market
+        - limit
+    Trigger:
+      type: string
+      enum:
+        - immediate
+        - stop
+    TimeInForce:
+        type: string
+        enum:
+          - gfd
+          - gtc
+          - ioc
+          - opg
+    OrderAction:
+        type: string
+        enum:
+          - order
+          - status
+          - cancel
+          - history
