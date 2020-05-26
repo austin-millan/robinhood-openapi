@@ -41,4 +41,7 @@ type Order struct {
 	Type ExecutionType `json:"type,omitempty"`
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	Url string `json:"url,omitempty"`
+	LastTrailPrice string `json:"last_trail_price,omitempty"`
+	LastTrailPriceUpdatedAt string `json:"last_trail_price_updated_at,omitempty"`
+	StopTriggeredAt string `json:"stop_triggered_at,omitempty"`
 }

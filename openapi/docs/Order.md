@@ -32,6 +32,9 @@ Name | Type | Description | Notes
 **Type** | [**ExecutionType**](ExecutionType.md) |  | [optional] 
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **Url** | **string** |  | [optional] 
+**LastTrailPrice** | **string** |  | [optional] 
+**LastTrailPriceUpdatedAt** | **string** |  | [optional] 
+**StopTriggeredAt** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

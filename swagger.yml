@@ -1532,6 +1532,12 @@ definitions:
         format: date-time
       url:
         type: string
+      last_trail_price:
+        type: string
+      last_trail_price_updated_at:
+        type: string
+      stop_triggered_at:
+        type: string
     title: Order
   OrderResponse:
     $ref: '#/definitions/Order'
