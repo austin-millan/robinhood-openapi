@@ -1,2 +1,2 @@
-module gitlab.com/trade-hawk/robinhood-openapi
+module gitlab.com/brokerage-api/robinhood-openapi
 go 1.13
