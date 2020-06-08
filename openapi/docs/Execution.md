@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | [optional] 
-**Price** | **float64** |  | [optional] 
-**Quantity** | **float64** |  | [optional] 
+**Price** | **string** |  | [optional] 
+**Quantity** | **string** |  | [optional] 
 **SettlementDate** | **string** |  | [optional] 
 **Timestamp** | [**time.Time**](time.Time.md) |  | [optional] 
 

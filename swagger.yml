@@ -1012,11 +1012,9 @@ components:
         id:
           type: string
         price:
-          type: number
-          format: double
+          type: string
         quantity:
-          type: number
-          format: double
+          type: string
         settlement_date:
           type: string
           format: date

@@ -15,8 +15,8 @@ import (
 // Execution struct for Execution
 type Execution struct {
 	Id string `json:"id,omitempty"`
-	Price float64 `json:"price,omitempty"`
-	Quantity float64 `json:"quantity,omitempty"`
+	Price string `json:"price,omitempty"`
+	Quantity string `json:"quantity,omitempty"`
 	SettlementDate string `json:"settlement_date,omitempty"`
 	Timestamp time.Time `json:"timestamp,omitempty"`
 }
