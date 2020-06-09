@@ -14,7 +14,7 @@ type TotalNetWorth string
 
 // List of TotalNetWorth
 const (
-	_0_24999 TotalNetWorth = "0_24999"
+	_24999_0 TotalNetWorth = "24999.0"
 	_25000_49999 TotalNetWorth = "25000_49999"
 	_50000_64999 TotalNetWorth = "50000_64999"
 	_65000_99999 TotalNetWorth = "65000_99999"

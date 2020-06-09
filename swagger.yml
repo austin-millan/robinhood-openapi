@@ -868,32 +868,27 @@ paths:
       deprecated: false
 components:
   schemas:
-    # Token:
-    #   type: apiKey
-    #   name: Authorization
-    #   in: header
     AccountInfo:
-      type: object
       properties:
         account_number:
           type: string
         buying_power:
-          type: number
           format: double
+          type: number
         cash:
-          type: number
           format: double
+          type: number
         cash_available_for_withdrawal:
-          type: number
           format: double
+          type: number
         cash_balances:
           $ref: '#/components/schemas/CashBalances'
         cash_held_for_orders:
-          type: number
           format: double
+          type: number
         created_at:
-          type: string
           format: date-time
+          type: string
         deactivated:
           type: boolean
         deposit_halted:
@@ -901,8 +896,8 @@ components:
         margin_balances:
           $ref: '#/components/schemas/MarginBalances'
         max_ach_early_access_amount:
-          type: number
           format: double
+          type: number
         only_position_closing_trades:
           type: boolean
         portfolio:
@@ -910,24 +905,24 @@ components:
         positions:
           type: string
         sma:
-          type: number
           format: double
+          type: number
         sma_held_for_orders:
-          type: number
           format: double
+          type: number
         sweep_enabled:
           type: boolean
         type:
           $ref: '#/components/schemas/AccountType'
         uncleared_deposits:
-          type: number
           format: double
+          type: number
         unsettled_funds:
-          type: number
           format: double
+          type: number
         updated_at:
-          type: string
           format: date-time
+          type: string
         url:
           type: string
         user:
@@ -935,10 +930,14 @@ components:
         withdrawal_halted:
           type: boolean
       title: AccountInfo
-    AuthResponse:
-      $ref: '#/components/schemas/Auth'
-    Auth:
       type: object
+    AccountType:
+      enum:
+        - cash
+        - margin
+      title: type
+      type: string
+    Auth:
       properties:
         mfa_required:
           type: string
@@ -946,8 +945,10 @@ components:
           type: string
         token:
           type: string
-    BasicInfo:
       type: object
+    AuthResponse:
+      $ref: '#/components/schemas/Auth'
+    BasicInfo:
       properties:
         address:
           type: string
@@ -962,8 +963,8 @@ components:
         marital_status:
           $ref: '#/components/schemas/MaritalStatus'
         number_dependents:
-          type: integer
           format: int32
+          type: integer
         phone_number:
           type: string
         state:
@@ -971,43 +972,227 @@ components:
         tax_id_ssn:
           type: string
         updated_at:
-          type: string
           format: date-time
+          type: string
         user:
           type: string
         zipcode:
           type: string
       title: BasicInfo
-    CashBalances:
       type: object
+    CashBalances:
       properties:
         buying_power:
-          type: number
           format: double
+          type: number
         cash:
-          type: number
           format: double
+          type: number
         cash_available_for_withdrawal:
-          type: number
           format: double
+          type: number
         cash_held_for_orders:
-          type: number
           format: double
+          type: number
+        created_at:
+          format: date-time
+          type: string
+        uncleared_deposits:
+          format: double
+          type: number
+        unsettled_funds:
+          format: double
+          type: number
+        updated_at:
+          format: date-time
+          type: string
+      title: CashBalances
+      type: object
+    CryptoAccount:
+      properties:
+        id:
+          title: id
+          type: string
+        status:
+          type: string
+        user_id:
+          title: user_id
+          type: string
+      type: object
+    CryptoAssetCurrency:
+      properties:
+        brand_color:
+          type: string
+        code:
+          type: string
+        id:
+          title: ID
+          type: string
+        increment:
+          title: increment
+          type: string
+        name:
+          title: string
+      type: object
+    CryptoCurrencyPair:
+      properties:
+        asset_currency:
+          $ref: '#/components/schemas/CryptoAssetCurrency'
+          title: asset_currency
+        id:
+          title: ID
+          type: string
+        max_order_size:
+          type: string
+        min_order_price_increment:
+          type: string
+        min_order_size:
+          title: min_order_size
+          type: string
+        name:
+          type: string
+        quote_currency:
+          $ref: '#/components/schemas/QuoteCurrency'
+          title: quote_currency
+        symbol:
+          type: string
+        tradability:
+          type: string
+      type: object
+    CryptoOrder:
+      properties:
+        account_id:
+          title: account_id
+          type: string
+        currency_pair_id:
+          title: currency_pair_id
+          type: string
+        price:
+          format: double
+          type: number
+        quantity:
+          format: double
+          type: number
+        ref_id:
+          title: ref_id
+          type: string
+        side:
+          type: string
+        time_in_force:
+          title: time_in_force
+          type: string
+        type:
+          title: type
+          type: string
+      type: object
+    CryptoOrderOptions:
+      properties:
+        account:
+          title: account
+          type: string
+        average_price:
+          format: double
+          type: number
+        cancel:
+          title: cancel
+          type: string
         created_at:
           type: string
-          format: date-time
-        uncleared_deposits:
-          type: number
-          format: double
-        unsettled_funds:
-          type: number
-          format: double
-        updated_at:
+        cumulative_quantity:
           type: string
-          format: date-time
-      title: CashBalances
-    Execution:
+        currency_pair_id:
+          type: string
+        executions:
+          items:
+            $ref: '#/components/schemas/Execution'
+          type: array
+        id:
+          title: id
+          type: string
+        last_transaction_at:
+          type: string
+        price:
+          type: string
+        quantity:
+          type: string
+        reject_reason:
+          type: string
+        side:
+          type: string
+        state:
+          type: string
+        stop_price:
+          title: stop_price
+          type: string
+        time_in_force:
+          title: time_in_force
+          type: string
+        type:
+          title: type
+          type: string
       type: object
+    CryptoOrderOutput:
+      properties:
+        account:
+          title: account
+          type: string
+        average_price:
+          format: double
+          type: number
+        cancel:
+          title: cancel
+          type: string
+        created_at:
+          type: string
+        cumulative_quantity:
+          type: string
+        currency_pair_id:
+          type: string
+        executions:
+          items:
+            $ref: '#/components/schemas/Execution'
+          type: array
+        id:
+          title: id
+          type: string
+        last_transaction_at:
+          type: string
+        price:
+          type: string
+        quantity:
+          type: string
+        reject_reason:
+          type: string
+        side:
+          type: string
+        state:
+          type: string
+        stop_price:
+          title: stop_price
+          type: string
+        time_in_force:
+          title: time_in_force
+          type: string
+        type:
+          title: type
+          type: string
+      type: object
+    CryptoPortfolio:
+      properties:
+        account_id:
+          type: string
+        equity:
+          type: string
+        extended_hours_equity:
+          type: string
+        extended_hours_market_value:
+          type: string
+        id:
+          title: id
+          type: string
+      title: CryptoPortfolio
+      type: object
+    Execution:
       properties:
         id:
           type: string
@@ -1016,60 +1201,65 @@ components:
         quantity:
           type: string
         settlement_date:
-          type: string
           format: date
-        timestamp:
           type: string
+        timestamp:
           format: date-time
+          type: string
       title: Execution
-    FundamentalsData:
       type: object
+    ExecutionType:
+      enum:
+        - market
+        - limit
+      type: string
+    FundamentalsData:
       properties:
         average_volume:
-          type: number
           format: double
+          type: number
         description:
           type: string
         dividend_yield:
-          type: number
           format: double
+          type: number
         high:
-          type: number
           format: double
+          type: number
         high_52_weeks:
-          type: number
           format: double
+          type: number
         instrument:
           type: string
         low:
-          type: number
           format: double
+          type: number
         low_52_weeks:
-          type: number
           format: double
+          type: number
         market_cap:
-          type: number
           format: double
+          type: number
         open:
-          type: number
           format: double
+          type: number
         pe_ratio:
-          type: number
           format: double
+          type: number
         volume:
-          type: number
           format: double
+          type: number
       title: FundamentalsData
-    InstrumentData:
       type: object
+    InstrumentData:
       properties:
         bloomberg_unique:
           type: string
         country:
           type: string
         day_trade_ratio:
-          type: number
           format: double
+          type: number
         fundamentals:
           type: string
         id:
@@ -1077,16 +1267,16 @@ components:
         list_date:
           type: string
         maintenance_ratio:
-          type: number
           format: double
+          type: number
         margin_initial_ratio:
-          type: number
           format: double
+          type: number
         market:
           type: string
         min_tick_size:
-          type: number
           format: double
+          type: number
         name:
           type: string
         quote:
@@ -1108,8 +1298,8 @@ components:
         url:
           type: string
       title: InstrumentData
-    InstrumentSplit:
       type: object
+    InstrumentSplit:
       properties:
         divisor:
           type: string
@@ -1122,8 +1312,28 @@ components:
         url:
           type: string
       title: InstrumentSplit
-    InvestmentProfile:
       type: object
+    InstrumentState:
+      enum:
+        - active
+        - inactive
+      type: string
+    InvestmentExperience:
+      enum:
+        - extensive_investment_exp
+        - good_investment_exp
+        - limited_investment_exp
+        - no_investment_exp
+      type: string
+    InvestmentObjective:
+      enum:
+        - cap_preserve_invest_obj
+        - income_invest_obj
+        - growth_invest_obj
+        - speculation_invest_obj
+        - other_invest_obj
+      type: string
+    InvestmentProfile:
       properties:
         annual_income:
           type: string
@@ -1148,65 +1358,76 @@ components:
         total_net_worth:
           $ref: '#/components/schemas/TotalNetWorth'
         updated_at:
-          type: string
           format: date-time
+          type: string
         user:
           type: string
       title: InvestmentProfile
-    MarginBalances:
       type: object
+    LiquidityNeeds:
+      enum:
+        - not_important_liq_need
+        - somewhat_important_liq_need
+        - very_important_liq_need
+      type: string
+    MarginBalances:
       properties:
         cash:
-          type: number
           format: double
+          type: number
         cash_available_for_withdrawal:
-          type: number
           format: double
+          type: number
         cash_held_for_orders:
-          type: number
           format: double
+          type: number
         created_at:
-          type: string
           format: date-time
+          type: string
         day_trade_buying_power:
-          type: number
           format: double
+          type: number
         day_trade_buying_power_held_for_orders:
-          type: number
           format: double
+          type: number
         day_trade_ratio:
-          type: number
           format: double
+          type: number
         margin_limit:
-          type: number
           format: double
+          type: number
         marked_pattern_day_trader_date:
-          type: string
           format: date-time
+          type: string
         overnight_buying_power:
-          type: number
           format: double
+          type: number
         overnight_buying_power_held_for_orders:
-          type: number
           format: double
+          type: number
         overnight_ratio:
-          type: number
           format: double
+          type: number
         unallocated_margin_cash:
-          type: number
           format: double
+          type: number
         uncleared_deposits:
-          type: number
           format: double
+          type: number
         unsettled_funds:
-          type: number
           format: double
+          type: number
         updated_at:
-          type: string
           format: date-time
+          type: string
       title: MarginBalances
-    MarketData:
       type: object
+    MaritalStatus:
+      enum:
+        - single
+        - married
+      type: string
+    MarketData:
       properties:
         acronym:
           type: string
@@ -1229,200 +1450,278 @@ components:
         website:
           type: string
       title: MarketData
-    MarketHours:
       type: object
+    MarketHours:
       properties:
         closes_at:
-          type: string
           format: date-time
+          type: string
         date:
-          type: string
           format: date-time
+          type: string
         extended_closes_at:
-          type: string
           format: date-time
+          type: string
         extended_opens_at:
-          type: string
           format: date-time
+          type: string
         is_open:
           type: boolean
         next_open_hours:
           type: string
         opens_at:
-          type: string
           format: date-time
+          type: string
         previous_open_hours:
           type: string
       title: MarketHours
+      type: object
     Movers:
-      type: object
       title: Movers
-    MultipleOfAccountInfo:
       type: object
+    MultipleOfAccountInfo:
       properties:
         count:
-          type: integer
           format: int32
+          type: integer
         next:
           type: string
         previous:
           type: string
         results:
-          type: array
           items:
             $ref: '#/components/schemas/AccountInfo'
+          type: array
       title: MultipleOfAccountInfo
-    MultipleOfFundamentalsData:
       type: object
+    MultipleOfFundamentalsData:
       properties:
         count:
-          type: integer
           format: int32
+          type: integer
         next:
           type: string
         previous:
           type: string
         results:
-          type: array
           items:
             $ref: '#/components/schemas/FundamentalsData'
+          type: array
       title: MultipleOfFundamentalsData
-    MultipleOfInstrumentData:
       type: object
+    MultipleOfInstrumentData:
       properties:
         count:
-          type: integer
           format: int32
+          type: integer
         next:
           type: string
         previous:
           type: string
         results:
-          type: array
           items:
             $ref: '#/components/schemas/InstrumentData'
+          type: array
       title: MultipleOfInstrumentData
-    MultipleOfInstrumentSplit:
       type: object
+    MultipleOfInstrumentSplit:
       properties:
         count:
-          type: integer
           format: int32
+          type: integer
         next:
           type: string
         previous:
           type: string
         results:
-          type: array
           items:
             $ref: '#/components/schemas/InstrumentSplit'
+          type: array
       title: MultipleOfInstrumentSplit
-    MultipleOfMarketData:
       type: object
+    MultipleOfMarketData:
       properties:
         count:
-          type: integer
           format: int32
+          type: integer
         next:
           type: string
         previous:
           type: string
         results:
-          type: array
           items:
             $ref: '#/components/schemas/MarketData'
+          type: array
       title: MultipleOfMarketData
-    MultipleOfMovers:
       type: object
+    MultipleOfMovers:
       properties:
         count:
-          type: integer
           format: int32
+          type: integer
         next:
           type: string
         previous:
           type: string
         results:
-          type: array
           items:
             $ref: '#/components/schemas/Movers'
+          type: array
       title: MultipleOfMovers
-    MultipleOfOrder:
       type: object
+    MultipleOfOrder:
       properties:
         count:
-          type: integer
           format: int32
+          type: integer
         next:
           type: string
         previous:
           type: string
         results:
-          type: array
           items:
             $ref: '#/components/schemas/Order'
-    MultipleOfPosition:
+          type: array
       type: object
+    MultipleOfPosition:
       properties:
         count:
-          type: integer
           format: int32
+          type: integer
         next:
           type: string
         previous:
           type: string
         results:
-          type: array
           items:
             $ref: '#/components/schemas/Position'
+          type: array
       title: MultipleOfPosition
-    MultipleOfQuoteData:
       type: object
+    MultipleOfQuoteData:
       properties:
         count:
-          type: integer
           format: int32
+          type: integer
         next:
           type: string
         previous:
           type: string
         results:
-          type: array
           items:
             $ref: '#/components/schemas/QuoteData'
+          type: array
       title: MultipleOfQuoteData
-    MultipleOfWatchListCreateResponse:
       type: object
+    MultipleOfWatchListCreateResponse:
       properties:
         count:
-          type: integer
           format: int32
+          type: integer
         next:
           type: string
         previous:
           type: string
         results:
-          type: array
           items:
             $ref: '#/components/schemas/WatchListCreateResponse'
+          type: array
       title: MultipleOfWatchListCreateResponse
-    MultipleOfWatchListsData:
       type: object
+    MultipleOfWatchListsData:
       properties:
         count:
-          type: integer
           format: int32
+          type: integer
         next:
           type: string
         previous:
           type: string
         results:
-          type: array
           items:
             $ref: '#/components/schemas/WatchListsData'
+          type: array
       title: MultipleOfWatchListsData
+      type: object
+    OptionOrderInput:
+      properties:
+        account:
+          type: string
+        direction:
+          type: string
+        override_day_trade_checks:
+          title: override_day_trade_checks
+          type: boolean
+        override_dtbp_checks:
+          title: override_dtbp_checks
+          type: boolean
+        price:
+          type: string
+        quantity:
+          type: string
+        ref_id:
+          type: string
+        time_in_force:
+          $ref: '#/components/schemas/TimeInForce'
+        trigger:
+          $ref: '#/components/schemas/Trigger'
+        type:
+          title: type
+          type: string
+      type: object
+    OptionsMarketData:
+      properties:
+        adjusted_mark_price:
+          type: string
+        ask_price:
+          type: string
+        ask_size:
+          type: string
+        bid_price:
+          type: string
+        bid_size:
+          type: string
+        break_even_price:
+          type: string
+        chance_of_profit_long:
+          type: string
+        chance_of_profit_short:
+          type: string
+        delta:
+          type: string
+        gamma:
+          type: string
+        high_price:
+          type: string
+        implied_volatility:
+          type: string
+        instrument:
+          type: string
+        last_trade_price:
+          type: string
+        last_trade_size:
+          type: string
+        low_price:
+          type: string
+        mark_price:
+          type: string
+        open_interest:
+          type: string
+        previous_close_date:
+          type: string
+        previous_close_price:
+          type: string
+        rho:
+          type: string
+        theta:
+          type: string
+        vega:
+          type: string
+        volume:
+          type: string
+      title: MarketData
+      type: object
     Order:
-      type: object      
       properties:
         account:
           type: string
@@ -1435,14 +1734,14 @@ components:
         client_id:
           type: string
         created_at:
-          type: string
           format: date-time
+          type: string
         cumulative_quantity:
           type: string
         executions:
-          type: array
           items:
             $ref: '#/components/schemas/Execution'
+          type: array
         extended_hours:
           type: boolean
         fees:
@@ -1451,9 +1750,13 @@ components:
           type: string
         instrument:
           type: string
-        last_transaction_at:
+        last_trail_price:
           type: string
+        last_trail_price_updated_at:
+          type: string
+        last_transaction_at:
           format: date-time
+          type: string
         override_day_trade_checks:
           type: boolean
         override_dtbp_checks:
@@ -1472,6 +1775,8 @@ components:
           $ref: '#/components/schemas/OrderState'
         stop_price:
           type: string
+        stop_triggered_at:
+          type: string
         symbol:
           type: string
         time_in_force:
@@ -1481,127 +1786,136 @@ components:
         type:
           $ref: '#/components/schemas/ExecutionType'
         updated_at:
-          type: string
           format: date-time
+          type: string
         url:
           type: string
-        last_trail_price:
-          type: string
-        last_trail_price_updated_at:
-          type: string
-        stop_triggered_at:
-          type: string
       title: Order
+      type: object
+    OrderAction:
+      enum:
+        - order
+        - status
+        - cancel
+        - history
+      type: string
     OrderResponse:
       $ref: '#/components/schemas/Order'
+    OrderState:
+      enum:
+        - queued
+        - unconfirmed
+        - confirmed
+        - partially_filled
+        - filled
+        - rejected
+        - canceled
+        - failed
+      type: string
     Portfolio:
-      type: object
       properties:
         account:
           type: string
         adjusted_equity_previous_close:
-          type: number
           format: double
+          type: number
         equity:
-          type: number
           format: double
+          type: number
         equity_previous_close:
-          type: number
           format: double
+          type: number
         excess_maintenance:
-          type: number
           format: double
+          type: number
         excess_maintenance_with_uncleared_deposits:
-          type: number
           format: double
+          type: number
         excess_margin:
-          type: number
           format: double
+          type: number
         excess_margin_with_uncleared_deposits:
-          type: number
           format: double
+          type: number
         extended_hours_equity:
-          type: number
           format: double
+          type: number
         extended_hours_market_value:
-          type: number
           format: double
+          type: number
         last_core_equity:
-          type: number
           format: double
+          type: number
         last_core_market_value:
-          type: number
           format: double
+          type: number
         market_value:
-          type: number
           format: double
+          type: number
         start_date:
           type: string
         unwithdrawable_deposits:
-          type: number
           format: double
+          type: number
         unwithdrawable_grants:
-          type: number
           format: double
+          type: number
         url:
           type: string
         withdrawable_amount:
-          type: number
           format: double
+          type: number
       title: Portfolio
-    Position:
       type: object
+    Position:
       properties:
         account:
           type: string
         average_buy_price:
-          type: number
           format: double
+          type: number
         created_at:
-          type: string
           format: date-time
+          type: string
         instrument:
           type: string
         intraday_average_buy_price:
-          type: number
           format: double
+          type: number
         intraday_quantity:
-          type: number
           format: double
+          type: number
         quantity:
-          type: number
           format: double
+          type: number
         shares_held_for_buys:
-          type: number
           format: double
+          type: number
         shares_held_for_sells:
-          type: number
           format: double
+          type: number
         shares_held_for_stock_grants:
-          type: number
           format: double
+          type: number
         updated_at:
-          type: string
           format: date-time
+          type: string
         url:
           type: string
       title: Position
-    QuoteData:
       type: object
+    Quote:
       properties:
         adjusted_previous_close:
           type: string
         ask_price:
           type: string
         ask_size:
-          type: integer
-          format: int32
+          type: string
         bid_price:
-          type: number
-          format: double
+          type: string
         bid_size:
-          type: integer
-          format: int32
+          type: string
         last_extended_hours_trade_price:
           type: string
         last_trade_price:
@@ -1610,17 +1924,118 @@ components:
           type: string
         previous_close_date:
           type: string
+        symbol:
+          type: string
+        trading_halted:
+          type: string
+        updated_at:
+          type: string
+      type: object
+    QuoteCurrency:
+      properties:
+        code:
+          type: string
+        id:
+          title: ID
+          type: string
+        increment:
+          title: increment
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+      type: object
+    QuoteData:
+      properties:
+        adjusted_previous_close:
+          type: string
+        ask_price:
+          type: string
+        ask_size:
+          format: int32
+          type: integer
+        bid_price:
+          format: double
+          type: number
+        bid_size:
+          format: int32
+          type: integer
+        last_extended_hours_trade_price:
+          type: string
+        last_trade_price:
+          type: string
+        previous_close:
+          type: string
+        previous_close_date:
           format: date
+          type: string
         symbol:
           type: string
         trading_halted:
           type: boolean
         updated_at:
-          type: string
           format: date-time
+          type: string
       title: QuoteData
-    UserId:
       type: object
+    RiskTolerance:
+      enum:
+        - low_risk_tolerance
+        - med_risk_tolerance
+        - high_risk_tolerance
+      type: string
+    SourceOfFunds:
+      enum:
+        - savings_personal_income
+        - pension_retirement
+        - insurance_payout
+        - inheritance
+        - gift
+        - sale_business_or_property
+        - other
+      type: string
+    TaxBracket:
+      enum:
+        - 0_pct
+        - 20_pct
+        - 25_pct
+        - 28_pct
+        - 33_pct
+        - 35_pct
+        - 39_6_pct
+      type: string
+    TimeHorizon:
+      enum:
+        - short_time_horizon
+        - med_time_horizon
+        - long_time_horizon
+      type: string
+    TimeInForce:
+      enum:
+        - gfd
+        - gtc
+        - ioc
+        - opg
+      type: string
+    TotalNetWorth:
+      enum:
+        - 0_24999
+        - '25000_49999'
+        - '50000_64999'
+        - '65000_99999'
+        - '100000_149999'
+        - '150000_199999'
+        - '250000_499999'
+        - '500000_999999'
+        - 1000000_inf
+      type: string
+    Trigger:
+      enum:
+        - immediate
+        - stop
+      type: string
+    UserId:
       properties:
         id:
           type: string
@@ -1629,8 +2044,8 @@ components:
         username:
           type: string
       title: UserId
-    UserInfo:
       type: object
+    UserInfo:
       properties:
         additional_info:
           type: string
@@ -1657,8 +2072,8 @@ components:
         username:
           type: string
       title: UserInfo
-    WatchListCreateResponse:
       type: object
+    WatchListCreateResponse:
       properties:
         name:
           type: string
@@ -1667,8 +2082,8 @@ components:
         user:
           type: string
       title: WatchListCreateResponse
-    WatchListsData:
       type: object
+    WatchListsData:
       properties:
         created_at:
           type: string
@@ -1679,119 +2094,13 @@ components:
         watchlist:
           type: string
       title: WatchListsData
-    OrderState:
-      type: string
-      enum:
-        - queued
-        - unconfirmed
-        - confirmed
-        - partially_filled
-        - filled
-        - rejected
-        - canceled
-        - failed
-    InstrumentState:
-      type: string
-      enum:
-        - active
-        - inactive
-    AccountType:
-      title: type
-      type: string
-      enum:
-        - cash
-        - margin
-    MaritalStatus:
-      type: string
-      enum:
-        - single
-        - married
-    InvestmentExperience:
-      type: string
-      enum:
-        - extensive_investment_exp
-        - good_investment_exp
-        - limited_investment_exp
-        - no_investment_exp
-    InvestmentObjective:
-      type: string
-      enum:
-        - cap_preserve_invest_obj
-        - income_invest_obj
-        - growth_invest_obj
-        - speculation_invest_obj
-        - other_invest_obj
-    LiquidityNeeds:
-      type: string
-      enum:
-        - not_important_liq_need
-        - somewhat_important_liq_need
-        - very_important_liq_need
-    RiskTolerance:
-      type: string
-      enum:
-        - low_risk_tolerance
-        - med_risk_tolerance
-        - high_risk_tolerance
-    SourceOfFunds:
-      type: string
-      enum:
-        - savings_personal_income
-        - pension_retirement
-        - insurance_payout
-        - inheritance
-        - gift
-        - sale_business_or_property
-        - other
-    TaxBracket:
-      type: string
-      enum:
-        - 0_pct
-        - 20_pct
-        - 25_pct
-        - 28_pct
-        - 33_pct
-        - 35_pct
-        - 39_6_pct
-    TimeHorizon:
-      type: string
-      enum:
-        - short_time_horizon
-        - med_time_horizon
-        - long_time_horizon
-    TotalNetWorth:
-      type: string
-      enum:
-        - "0_24999"
-        - "25000_49999"
-        - "50000_64999"
-        - "65000_99999"
-        - "100000_149999"
-        - "150000_199999"
-        - "250000_499999"
-        - "500000_999999"
-        - "1000000_inf"
-    ExecutionType:
-      type: string
-      enum:
-        - market
-        - limit
-    Trigger:
-      type: string
-      enum:
-        - immediate
-        - stop
-    TimeInForce:
-        type: string
-        enum:
-          - gfd
-          - gtc
-          - ioc
-          - opg
-    OrderAction:
-        type: string
-        enum:
-          - order
-          - status
-          - cancel
-          - history
+      type: object
+    Watchlist:
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+        user:
+          type: string
+      type: object

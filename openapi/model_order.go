@@ -26,6 +26,8 @@ type Order struct {
 	Fees string `json:"fees,omitempty"`
 	Id string `json:"id,omitempty"`
 	Instrument string `json:"instrument,omitempty"`
+	LastTrailPrice string `json:"last_trail_price,omitempty"`
+	LastTrailPriceUpdatedAt string `json:"last_trail_price_updated_at,omitempty"`
 	LastTransactionAt time.Time `json:"last_transaction_at,omitempty"`
 	OverrideDayTradeChecks bool `json:"override_day_trade_checks,omitempty"`
 	OverrideDtbpChecks bool `json:"override_dtbp_checks,omitempty"`
@@ -36,13 +38,11 @@ type Order struct {
 	Side string `json:"side,omitempty"`
 	State OrderState `json:"state,omitempty"`
 	StopPrice string `json:"stop_price,omitempty"`
+	StopTriggeredAt string `json:"stop_triggered_at,omitempty"`
 	Symbol string `json:"symbol,omitempty"`
 	TimeInForce TimeInForce `json:"time_in_force,omitempty"`
 	Trigger string `json:"trigger,omitempty"`
 	Type ExecutionType `json:"type,omitempty"`
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	Url string `json:"url,omitempty"`
-	LastTrailPrice string `json:"last_trail_price,omitempty"`
-	LastTrailPriceUpdatedAt string `json:"last_trail_price_updated_at,omitempty"`
-	StopTriggeredAt string `json:"stop_triggered_at,omitempty"`
 }

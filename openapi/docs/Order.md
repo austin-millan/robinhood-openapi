@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **Fees** | **string** |  | [optional] 
 **Id** | **string** |  | [optional] 
 **Instrument** | **string** |  | [optional] 
+**LastTrailPrice** | **string** |  | [optional] 
+**LastTrailPriceUpdatedAt** | **string** |  | [optional] 
 **LastTransactionAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **OverrideDayTradeChecks** | **bool** |  | [optional] 
 **OverrideDtbpChecks** | **bool** |  | [optional] 
@@ -26,15 +28,13 @@ Name | Type | Description | Notes
 **Side** | **string** |  | [optional] 
 **State** | [**OrderState**](OrderState.md) |  | [optional] 
 **StopPrice** | **string** |  | [optional] 
+**StopTriggeredAt** | **string** |  | [optional] 
 **Symbol** | **string** |  | [optional] 
 **TimeInForce** | [**TimeInForce**](TimeInForce.md) |  | [optional] 
 **Trigger** | **string** |  | [optional] 
 **Type** | [**ExecutionType**](ExecutionType.md) |  | [optional] 
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **Url** | **string** |  | [optional] 
-**LastTrailPrice** | **string** |  | [optional] 
-**LastTrailPriceUpdatedAt** | **string** |  | [optional] 
-**StopTriggeredAt** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
