@@ -11,7 +11,7 @@
 package openapi
 // MultipleOfMarketData struct for MultipleOfMarketData
 type MultipleOfMarketData struct {
-	Count int32 `json:"count,omitempty"`
+	Count string `json:"count,omitempty"`
 	Next string `json:"next,omitempty"`
 	Previous string `json:"previous,omitempty"`
 	Results []MarketData `json:"results,omitempty"`

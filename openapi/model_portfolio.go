@@ -12,21 +12,21 @@ package openapi
 // Portfolio struct for Portfolio
 type Portfolio struct {
 	Account string `json:"account,omitempty"`
-	AdjustedEquityPreviousClose float64 `json:"adjusted_equity_previous_close,omitempty"`
-	Equity float64 `json:"equity,omitempty"`
-	EquityPreviousClose float64 `json:"equity_previous_close,omitempty"`
-	ExcessMaintenance float64 `json:"excess_maintenance,omitempty"`
-	ExcessMaintenanceWithUnclearedDeposits float64 `json:"excess_maintenance_with_uncleared_deposits,omitempty"`
-	ExcessMargin float64 `json:"excess_margin,omitempty"`
-	ExcessMarginWithUnclearedDeposits float64 `json:"excess_margin_with_uncleared_deposits,omitempty"`
-	ExtendedHoursEquity float64 `json:"extended_hours_equity,omitempty"`
-	ExtendedHoursMarketValue float64 `json:"extended_hours_market_value,omitempty"`
-	LastCoreEquity float64 `json:"last_core_equity,omitempty"`
-	LastCoreMarketValue float64 `json:"last_core_market_value,omitempty"`
-	MarketValue float64 `json:"market_value,omitempty"`
+	AdjustedEquityPreviousClose string `json:"adjusted_equity_previous_close,omitempty"`
+	Equity string `json:"equity,omitempty"`
+	EquityPreviousClose string `json:"equity_previous_close,omitempty"`
+	ExcessMaintenance string `json:"excess_maintenance,omitempty"`
+	ExcessMaintenanceWithUnclearedDeposits string `json:"excess_maintenance_with_uncleared_deposits,omitempty"`
+	ExcessMargin string `json:"excess_margin,omitempty"`
+	ExcessMarginWithUnclearedDeposits string `json:"excess_margin_with_uncleared_deposits,omitempty"`
+	ExtendedHoursEquity string `json:"extended_hours_equity,omitempty"`
+	ExtendedHoursMarketValue string `json:"extended_hours_market_value,omitempty"`
+	LastCoreEquity string `json:"last_core_equity,omitempty"`
+	LastCoreMarketValue string `json:"last_core_market_value,omitempty"`
+	MarketValue string `json:"market_value,omitempty"`
 	StartDate string `json:"start_date,omitempty"`
-	UnwithdrawableDeposits float64 `json:"unwithdrawable_deposits,omitempty"`
-	UnwithdrawableGrants float64 `json:"unwithdrawable_grants,omitempty"`
+	UnwithdrawableDeposits string `json:"unwithdrawable_deposits,omitempty"`
+	UnwithdrawableGrants string `json:"unwithdrawable_grants,omitempty"`
 	Url string `json:"url,omitempty"`
-	WithdrawableAmount float64 `json:"withdrawable_amount,omitempty"`
+	WithdrawableAmount string `json:"withdrawable_amount,omitempty"`
 }

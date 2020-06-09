@@ -11,7 +11,7 @@
 package openapi
 // MultipleOfMovers struct for MultipleOfMovers
 type MultipleOfMovers struct {
-	Count int32 `json:"count,omitempty"`
+	Count string `json:"count,omitempty"`
 	Next string `json:"next,omitempty"`
 	Previous string `json:"previous,omitempty"`
 	Results []map[string]interface{} `json:"results,omitempty"`

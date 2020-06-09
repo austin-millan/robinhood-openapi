@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Count** | **int32** |  | [optional] 
+**Count** | **string** |  | [optional] 
 **Next** | **string** |  | [optional] 
 **Previous** | **string** |  | [optional] 
 **Results** | [**[]Order**](Order.md) |  | [optional] 

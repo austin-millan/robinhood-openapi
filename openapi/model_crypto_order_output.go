@@ -12,8 +12,9 @@ package openapi
 // CryptoOrderOutput struct for CryptoOrderOutput
 type CryptoOrderOutput struct {
 	Account string `json:"account,omitempty"`
-	AveragePrice float64 `json:"average_price,omitempty"`
+	AveragePrice string `json:"average_price,omitempty"`
 	Cancel string `json:"cancel,omitempty"`
+	CancelUrl string `json:"cancel_url,omitempty"`
 	CreatedAt string `json:"created_at,omitempty"`
 	CumulativeQuantity string `json:"cumulative_quantity,omitempty"`
 	CurrencyPairId string `json:"currency_pair_id,omitempty"`
@@ -23,9 +24,9 @@ type CryptoOrderOutput struct {
 	Price string `json:"price,omitempty"`
 	Quantity string `json:"quantity,omitempty"`
 	RejectReason string `json:"reject_reason,omitempty"`
-	Side string `json:"side,omitempty"`
+	Side Side `json:"side,omitempty"`
 	State string `json:"state,omitempty"`
 	StopPrice string `json:"stop_price,omitempty"`
-	TimeInForce string `json:"time_in_force,omitempty"`
+	TimeInForce TimeInForce `json:"time_in_force,omitempty"`
 	Type string `json:"type,omitempty"`
 }

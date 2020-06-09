@@ -868,24 +868,31 @@ paths:
       deprecated: false
 components:
   schemas:
+    Account:
+      properties:
+        option:
+          type: string
+        position_effect:
+          type: string
+        ratio_quantity:
+          type: string
+        side:
+          type: string
+      type: object
     AccountInfo:
       properties:
         account_number:
           type: string
         buying_power:
-          format: double
-          type: number
+          type: string
         cash:
-          format: double
-          type: number
+          type: string
         cash_available_for_withdrawal:
-          format: double
-          type: number
+          type: string
         cash_balances:
           $ref: '#/components/schemas/CashBalances'
         cash_held_for_orders:
-          format: double
-          type: number
+          type: string
         created_at:
           format: date-time
           type: string
@@ -896,8 +903,7 @@ components:
         margin_balances:
           $ref: '#/components/schemas/MarginBalances'
         max_ach_early_access_amount:
-          format: double
-          type: number
+          type: string
         only_position_closing_trades:
           type: boolean
         portfolio:
@@ -905,21 +911,17 @@ components:
         positions:
           type: string
         sma:
-          format: double
-          type: number
+          type: string
         sma_held_for_orders:
-          format: double
-          type: number
+          type: string
         sweep_enabled:
           type: boolean
         type:
           $ref: '#/components/schemas/AccountType'
         uncleared_deposits:
-          format: double
-          type: number
+          type: string
         unsettled_funds:
-          format: double
-          type: number
+          type: string
         updated_at:
           format: date-time
           type: string
@@ -963,8 +965,7 @@ components:
         marital_status:
           $ref: '#/components/schemas/MaritalStatus'
         number_dependents:
-          format: int32
-          type: integer
+          type: string
         phone_number:
           type: string
         state:
@@ -983,26 +984,20 @@ components:
     CashBalances:
       properties:
         buying_power:
-          format: double
-          type: number
+          type: string
         cash:
-          format: double
-          type: number
+          type: string
         cash_available_for_withdrawal:
-          format: double
-          type: number
+          type: string
         cash_held_for_orders:
-          format: double
-          type: number
+          type: string
         created_at:
           format: date-time
           type: string
         uncleared_deposits:
-          format: double
-          type: number
+          type: string
         unsettled_funds:
-          format: double
-          type: number
+          type: string
         updated_at:
           format: date-time
           type: string
@@ -1068,22 +1063,20 @@ components:
           title: currency_pair_id
           type: string
         price:
-          format: double
-          type: number
+          type: string
         quantity:
-          format: double
-          type: number
+          type: string
         ref_id:
           title: ref_id
           type: string
         side:
-          type: string
+          $ref: '#/components/schemas/Side'
         time_in_force:
           title: time_in_force
-          type: string
+          $ref: '#/components/schemas/TimeInForce' 
         type:
           title: type
-          type: string
+          $ref: '#/components/schemas/ExecutionType' 
       type: object
     CryptoOrderOptions:
       properties:
@@ -1091,8 +1084,7 @@ components:
           title: account
           type: string
         average_price:
-          format: double
-          type: number
+          type: string
         cancel:
           title: cancel
           type: string
@@ -1118,7 +1110,7 @@ components:
         reject_reason:
           type: string
         side:
-          type: string
+          $ref: '#/components/schemas/Side'
         state:
           type: string
         stop_price:
@@ -1126,7 +1118,7 @@ components:
           type: string
         time_in_force:
           title: time_in_force
-          type: string
+          $ref: '#/components/schemas/TimeInForce' 
         type:
           title: type
           type: string
@@ -1137,10 +1129,12 @@ components:
           title: account
           type: string
         average_price:
-          format: double
-          type: number
+          type: string
         cancel:
           title: cancel
+          type: string
+        cancel_url:
+          title: cancel_url
           type: string
         created_at:
           type: string
@@ -1164,7 +1158,7 @@ components:
         reject_reason:
           type: string
         side:
-          type: string
+          $ref: '#/components/schemas/Side'
         state:
           type: string
         stop_price:
@@ -1172,7 +1166,7 @@ components:
           type: string
         time_in_force:
           title: time_in_force
-          type: string
+          $ref: '#/components/schemas/TimeInForce' 
         type:
           title: type
           type: string
@@ -1216,39 +1210,29 @@ components:
     FundamentalsData:
       properties:
         average_volume:
-          format: double
-          type: number
+          type: string
         description:
           type: string
         dividend_yield:
-          format: double
-          type: number
+          type: string
         high:
-          format: double
-          type: number
+          type: string
         high_52_weeks:
-          format: double
-          type: number
+          type: string
         instrument:
           type: string
         low:
-          format: double
-          type: number
+          type: string
         low_52_weeks:
-          format: double
-          type: number
+          type: string
         market_cap:
-          format: double
-          type: number
+          type: string
         open:
-          format: double
-          type: number
+          type: string
         pe_ratio:
-          format: double
-          type: number
+          type: string
         volume:
-          format: double
-          type: number
+          type: string
       title: FundamentalsData
       type: object
     InstrumentData:
@@ -1258,8 +1242,7 @@ components:
         country:
           type: string
         day_trade_ratio:
-          format: double
-          type: number
+          type: string
         fundamentals:
           type: string
         id:
@@ -1267,16 +1250,13 @@ components:
         list_date:
           type: string
         maintenance_ratio:
-          format: double
-          type: number
+          type: string
         margin_initial_ratio:
-          format: double
-          type: number
+          type: string
         market:
           type: string
         min_tick_size:
-          format: double
-          type: number
+          type: string
         name:
           type: string
         quote:
@@ -1292,6 +1272,7 @@ components:
         tradability:
           type: string
         tradeable:
+          format: boolean
           type: string
         type:
           type: string
@@ -1364,6 +1345,17 @@ components:
           type: string
       title: InvestmentProfile
       type: object
+    Leg:
+      properties:
+        option:
+          type: string
+        position_effect:
+          type: string
+        ratio_quantity:
+          type: string
+        side:
+          $ref: '#/components/schemas/Side'
+      type: object
     LiquidityNeeds:
       enum:
         - not_important_liq_need
@@ -1373,50 +1365,37 @@ components:
     MarginBalances:
       properties:
         cash:
-          format: double
-          type: number
+          type: string
         cash_available_for_withdrawal:
-          format: double
-          type: number
+          type: string
         cash_held_for_orders:
-          format: double
-          type: number
+          type: string
         created_at:
           format: date-time
           type: string
         day_trade_buying_power:
-          format: double
-          type: number
+          type: string
         day_trade_buying_power_held_for_orders:
-          format: double
-          type: number
+          type: string
         day_trade_ratio:
-          format: double
-          type: number
+          type: string
         margin_limit:
-          format: double
-          type: number
+          type: string
         marked_pattern_day_trader_date:
           format: date-time
           type: string
         overnight_buying_power:
-          format: double
-          type: number
+          type: string
         overnight_buying_power_held_for_orders:
-          format: double
-          type: number
+          type: string
         overnight_ratio:
-          format: double
-          type: number
+          type: string
         unallocated_margin_cash:
-          format: double
-          type: number
+          type: string
         uncleared_deposits:
-          format: double
-          type: number
+          type: string
         unsettled_funds:
-          format: double
-          type: number
+          type: string
         updated_at:
           format: date-time
           type: string
@@ -1476,14 +1455,21 @@ components:
           type: string
       title: MarketHours
       type: object
+    MinTicks:
+      properties:
+        above_tick:
+          type: string
+        below_tick:
+          type: string
+        cutoff_price:
+          type: string
     Movers:
       title: Movers
       type: object
     MultipleOfAccountInfo:
       properties:
         count:
-          format: int32
-          type: integer
+          type: string
         next:
           type: string
         previous:
@@ -1497,8 +1483,7 @@ components:
     MultipleOfFundamentalsData:
       properties:
         count:
-          format: int32
-          type: integer
+          type: string
         next:
           type: string
         previous:
@@ -1512,8 +1497,7 @@ components:
     MultipleOfInstrumentData:
       properties:
         count:
-          format: int32
-          type: integer
+          type: string
         next:
           type: string
         previous:
@@ -1527,8 +1511,7 @@ components:
     MultipleOfInstrumentSplit:
       properties:
         count:
-          format: int32
-          type: integer
+          type: string
         next:
           type: string
         previous:
@@ -1542,8 +1525,7 @@ components:
     MultipleOfMarketData:
       properties:
         count:
-          format: int32
-          type: integer
+          type: string
         next:
           type: string
         previous:
@@ -1557,8 +1539,7 @@ components:
     MultipleOfMovers:
       properties:
         count:
-          format: int32
-          type: integer
+          type: string
         next:
           type: string
         previous:
@@ -1572,8 +1553,7 @@ components:
     MultipleOfOrder:
       properties:
         count:
-          format: int32
-          type: integer
+          type: string
         next:
           type: string
         previous:
@@ -1586,8 +1566,7 @@ components:
     MultipleOfPosition:
       properties:
         count:
-          format: int32
-          type: integer
+          type: string
         next:
           type: string
         previous:
@@ -1601,8 +1580,7 @@ components:
     MultipleOfQuoteData:
       properties:
         count:
-          format: int32
-          type: integer
+          type: string
         next:
           type: string
         previous:
@@ -1616,8 +1594,7 @@ components:
     MultipleOfWatchListCreateResponse:
       properties:
         count:
-          format: int32
-          type: integer
+          type: string
         next:
           type: string
         previous:
@@ -1631,8 +1608,7 @@ components:
     MultipleOfWatchListsData:
       properties:
         count:
-          format: int32
-          type: integer
+          type: string
         next:
           type: string
         previous:
@@ -1643,12 +1619,70 @@ components:
           type: array
       title: MultipleOfWatchListsData
       type: object
+    OptionChain:
+      properties:
+        can_open_position:
+          type: boolean
+        cash_component:
+          type: object
+        expiration_dates:
+          type: array
+          items:
+            type: string
+        id:
+          title: id
+          type: string
+        min_ticks:
+          $ref: '#/components/schemas/MinTicks'
+        symbol:
+          type: string
+        trade_value_multiplier:
+          type: string
+        underlying_instruments:
+          items:
+            $ref:  "#/components/schemas/UnderlyingInstrument"
+          type: array
+    OptionInstrument:
+      properties:
+        chain_id:
+          type: string
+        chain_symbol:
+          type: string
+        created_at:
+          type: string
+        expiration_date:
+          format: date ## TODO
+          type: string
+        id:
+          title: id
+          type: string
+        issue_date:
+          type: string
+        min_ticks:
+          $ref: '#/components/schemas/MinTicks'
+        rhs_tradability:
+          type: string
+        state:
+          type: string
+        strike_price:
+          type: string
+        tradability:
+          type: string
+        type:
+          type: string
+        updated_at:
+          type: string
+        url:
+          type: string
     OptionOrderInput:
       properties:
         account:
           type: string
         direction:
-          type: string
+          $ref: '#/components/schemas/Direction'
+        legs:
+          items:
+            $ref: '#/components/schemas/Leg'
         override_day_trade_checks:
           title: override_day_trade_checks
           type: boolean
@@ -1667,7 +1701,7 @@ components:
           $ref: '#/components/schemas/Trigger'
         type:
           title: type
-          type: string
+          $ref: '#/components/schemas/ExecutionType'
       type: object
     OptionsMarketData:
       properties:
@@ -1729,7 +1763,7 @@ components:
           $ref: '#/components/schemas/OrderAction'
         average_price:
           type: string
-        cancel:
+        cancel_url:
           type: string
         client_id:
           type: string
@@ -1755,7 +1789,6 @@ components:
         last_trail_price_updated_at:
           type: string
         last_transaction_at:
-          format: date-time
           type: string
         override_day_trade_checks:
           type: boolean
@@ -1770,7 +1803,7 @@ components:
         reject_reason:
           type: string
         side:
-          type: string
+          $ref: '#/components/schemas/Side'
         state:
           $ref: '#/components/schemas/OrderState'
         stop_price:
@@ -1782,7 +1815,7 @@ components:
         time_in_force:
           $ref: '#/components/schemas/TimeInForce'
         trigger:
-          type: string
+          $ref: '#/components/schemas/Trigger'
         type:
           $ref: '#/components/schemas/ExecutionType'
         updated_at:
@@ -1817,54 +1850,39 @@ components:
         account:
           type: string
         adjusted_equity_previous_close:
-          format: double
-          type: number
+          type: string
         equity:
-          format: double
-          type: number
+          type: string
         equity_previous_close:
-          format: double
-          type: number
+          type: string
         excess_maintenance:
-          format: double
-          type: number
+          type: string
         excess_maintenance_with_uncleared_deposits:
-          format: double
-          type: number
+          type: string
         excess_margin:
-          format: double
-          type: number
+          type: string
         excess_margin_with_uncleared_deposits:
-          format: double
-          type: number
+          type: string
         extended_hours_equity:
-          format: double
-          type: number
+          type: string
         extended_hours_market_value:
-          format: double
-          type: number
+          type: string
         last_core_equity:
-          format: double
-          type: number
+          type: string
         last_core_market_value:
-          format: double
-          type: number
+          type: string
         market_value:
-          format: double
-          type: number
+          type: string
         start_date:
           type: string
         unwithdrawable_deposits:
-          format: double
-          type: number
+          type: string
         unwithdrawable_grants:
-          format: double
-          type: number
+          type: string
         url:
           type: string
         withdrawable_amount:
-          format: double
-          type: number
+          type: string
       title: Portfolio
       type: object
     Position:
@@ -1872,31 +1890,24 @@ components:
         account:
           type: string
         average_buy_price:
-          format: double
-          type: number
+          type: string
         created_at:
           format: date-time
           type: string
         instrument:
           type: string
         intraday_average_buy_price:
-          format: double
-          type: number
+          type: string
         intraday_quantity:
-          format: double
-          type: number
+          type: string
         quantity:
-          format: double
-          type: number
+          type: string
         shares_held_for_buys:
-          format: double
-          type: number
+          type: string
         shares_held_for_sells:
-          format: double
-          type: number
+          type: string
         shares_held_for_stock_grants:
-          format: double
-          type: number
+          type: string
         updated_at:
           format: date-time
           type: string
@@ -1911,11 +1922,13 @@ components:
         ask_price:
           type: string
         ask_size:
-          type: string
+          format: int32
+          type: number
         bid_price:
           type: string
         bid_size:
-          type: string
+          format: int32
+          type: number
         last_extended_hours_trade_price:
           type: string
         last_trade_price:
@@ -1927,7 +1940,7 @@ components:
         symbol:
           type: string
         trading_halted:
-          type: string
+          type: boolean
         updated_at:
           type: string
       type: object
@@ -1953,14 +1966,11 @@ components:
         ask_price:
           type: string
         ask_size:
-          format: int32
-          type: integer
+          type: string
         bid_price:
-          format: double
-          type: number
+          type: string
         bid_size:
-          format: int32
-          type: integer
+          type: string
         last_extended_hours_trade_price:
           type: string
         last_trade_price:
@@ -1984,6 +1994,11 @@ components:
         - low_risk_tolerance
         - med_risk_tolerance
         - high_risk_tolerance
+      type: string
+    Side:
+      enum:
+        - buy
+        - sell
       type: string
     SourceOfFunds:
       enum:
@@ -2035,6 +2050,16 @@ components:
         - immediate
         - stop
       type: string
+    UnderlyingInstrument:
+      properties:
+        id:
+          title: id
+          type: string
+        instrument:
+          title: instrument
+          type: string
+        quantity:
+          type: number
     UserId:
       properties:
         id:
@@ -2104,3 +2129,8 @@ components:
         user:
           type: string
       type: object
+    Direction:
+      type: string
+      enum:
+        - debit
+        - credit

@@ -14,20 +14,20 @@ import (
 )
 // MarginBalances struct for MarginBalances
 type MarginBalances struct {
-	Cash float64 `json:"cash,omitempty"`
-	CashAvailableForWithdrawal float64 `json:"cash_available_for_withdrawal,omitempty"`
-	CashHeldForOrders float64 `json:"cash_held_for_orders,omitempty"`
+	Cash string `json:"cash,omitempty"`
+	CashAvailableForWithdrawal string `json:"cash_available_for_withdrawal,omitempty"`
+	CashHeldForOrders string `json:"cash_held_for_orders,omitempty"`
 	CreatedAt time.Time `json:"created_at,omitempty"`
-	DayTradeBuyingPower float64 `json:"day_trade_buying_power,omitempty"`
-	DayTradeBuyingPowerHeldForOrders float64 `json:"day_trade_buying_power_held_for_orders,omitempty"`
-	DayTradeRatio float64 `json:"day_trade_ratio,omitempty"`
-	MarginLimit float64 `json:"margin_limit,omitempty"`
+	DayTradeBuyingPower string `json:"day_trade_buying_power,omitempty"`
+	DayTradeBuyingPowerHeldForOrders string `json:"day_trade_buying_power_held_for_orders,omitempty"`
+	DayTradeRatio string `json:"day_trade_ratio,omitempty"`
+	MarginLimit string `json:"margin_limit,omitempty"`
 	MarkedPatternDayTraderDate time.Time `json:"marked_pattern_day_trader_date,omitempty"`
-	OvernightBuyingPower float64 `json:"overnight_buying_power,omitempty"`
-	OvernightBuyingPowerHeldForOrders float64 `json:"overnight_buying_power_held_for_orders,omitempty"`
-	OvernightRatio float64 `json:"overnight_ratio,omitempty"`
-	UnallocatedMarginCash float64 `json:"unallocated_margin_cash,omitempty"`
-	UnclearedDeposits float64 `json:"uncleared_deposits,omitempty"`
-	UnsettledFunds float64 `json:"unsettled_funds,omitempty"`
+	OvernightBuyingPower string `json:"overnight_buying_power,omitempty"`
+	OvernightBuyingPowerHeldForOrders string `json:"overnight_buying_power_held_for_orders,omitempty"`
+	OvernightRatio string `json:"overnight_ratio,omitempty"`
+	UnallocatedMarginCash string `json:"unallocated_margin_cash,omitempty"`
+	UnclearedDeposits string `json:"uncleared_deposits,omitempty"`
+	UnsettledFunds string `json:"unsettled_funds,omitempty"`
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 }

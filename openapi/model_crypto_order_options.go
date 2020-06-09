@@ -12,7 +12,7 @@ package openapi
 // CryptoOrderOptions struct for CryptoOrderOptions
 type CryptoOrderOptions struct {
 	Account string `json:"account,omitempty"`
-	AveragePrice float64 `json:"average_price,omitempty"`
+	AveragePrice string `json:"average_price,omitempty"`
 	Cancel string `json:"cancel,omitempty"`
 	CreatedAt string `json:"created_at,omitempty"`
 	CumulativeQuantity string `json:"cumulative_quantity,omitempty"`
@@ -23,9 +23,9 @@ type CryptoOrderOptions struct {
 	Price string `json:"price,omitempty"`
 	Quantity string `json:"quantity,omitempty"`
 	RejectReason string `json:"reject_reason,omitempty"`
-	Side string `json:"side,omitempty"`
+	Side Side `json:"side,omitempty"`
 	State string `json:"state,omitempty"`
 	StopPrice string `json:"stop_price,omitempty"`
-	TimeInForce string `json:"time_in_force,omitempty"`
+	TimeInForce TimeInForce `json:"time_in_force,omitempty"`
 	Type string `json:"type,omitempty"`
 }

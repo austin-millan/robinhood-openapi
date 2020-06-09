@@ -13,10 +13,10 @@ package openapi
 type CryptoOrder struct {
 	AccountId string `json:"account_id,omitempty"`
 	CurrencyPairId string `json:"currency_pair_id,omitempty"`
-	Price float64 `json:"price,omitempty"`
-	Quantity float64 `json:"quantity,omitempty"`
+	Price string `json:"price,omitempty"`
+	Quantity string `json:"quantity,omitempty"`
 	RefId string `json:"ref_id,omitempty"`
-	Side string `json:"side,omitempty"`
-	TimeInForce string `json:"time_in_force,omitempty"`
-	Type string `json:"type,omitempty"`
+	Side Side `json:"side,omitempty"`
+	TimeInForce TimeInForce `json:"time_in_force,omitempty"`
+	Type ExecutionType `json:"type,omitempty"`
 }

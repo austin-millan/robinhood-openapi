@@ -20,7 +20,7 @@ type BasicInfo struct {
 	CountryOfResidence string `json:"country_of_residence,omitempty"`
 	DateOfBirth string `json:"date_of_birth,omitempty"`
 	MaritalStatus MaritalStatus `json:"marital_status,omitempty"`
-	NumberDependents int32 `json:"number_dependents,omitempty"`
+	NumberDependents string `json:"number_dependents,omitempty"`
 	PhoneNumber string `json:"phone_number,omitempty"`
 	State string `json:"state,omitempty"`
 	TaxIdSsn string `json:"tax_id_ssn,omitempty"`

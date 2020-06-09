@@ -17,7 +17,7 @@ type Order struct {
 	Account string `json:"account,omitempty"`
 	Action OrderAction `json:"action,omitempty"`
 	AveragePrice string `json:"average_price,omitempty"`
-	Cancel string `json:"cancel,omitempty"`
+	CancelUrl string `json:"cancel_url,omitempty"`
 	ClientId string `json:"client_id,omitempty"`
 	CreatedAt time.Time `json:"created_at,omitempty"`
 	CumulativeQuantity string `json:"cumulative_quantity,omitempty"`
@@ -28,20 +28,20 @@ type Order struct {
 	Instrument string `json:"instrument,omitempty"`
 	LastTrailPrice string `json:"last_trail_price,omitempty"`
 	LastTrailPriceUpdatedAt string `json:"last_trail_price_updated_at,omitempty"`
-	LastTransactionAt time.Time `json:"last_transaction_at,omitempty"`
+	LastTransactionAt string `json:"last_transaction_at,omitempty"`
 	OverrideDayTradeChecks bool `json:"override_day_trade_checks,omitempty"`
 	OverrideDtbpChecks bool `json:"override_dtbp_checks,omitempty"`
 	Position string `json:"position,omitempty"`
 	Price string `json:"price,omitempty"`
 	Quantity string `json:"quantity,omitempty"`
 	RejectReason string `json:"reject_reason,omitempty"`
-	Side string `json:"side,omitempty"`
+	Side Side `json:"side,omitempty"`
 	State OrderState `json:"state,omitempty"`
 	StopPrice string `json:"stop_price,omitempty"`
 	StopTriggeredAt string `json:"stop_triggered_at,omitempty"`
 	Symbol string `json:"symbol,omitempty"`
 	TimeInForce TimeInForce `json:"time_in_force,omitempty"`
-	Trigger string `json:"trigger,omitempty"`
+	Trigger Trigger `json:"trigger,omitempty"`
 	Type ExecutionType `json:"type,omitempty"`
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	Url string `json:"url,omitempty"`

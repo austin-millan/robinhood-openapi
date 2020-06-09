@@ -15,25 +15,25 @@ import (
 // AccountInfo struct for AccountInfo
 type AccountInfo struct {
 	AccountNumber string `json:"account_number,omitempty"`
-	BuyingPower float64 `json:"buying_power,omitempty"`
-	Cash float64 `json:"cash,omitempty"`
-	CashAvailableForWithdrawal float64 `json:"cash_available_for_withdrawal,omitempty"`
+	BuyingPower string `json:"buying_power,omitempty"`
+	Cash string `json:"cash,omitempty"`
+	CashAvailableForWithdrawal string `json:"cash_available_for_withdrawal,omitempty"`
 	CashBalances CashBalances `json:"cash_balances,omitempty"`
-	CashHeldForOrders float64 `json:"cash_held_for_orders,omitempty"`
+	CashHeldForOrders string `json:"cash_held_for_orders,omitempty"`
 	CreatedAt time.Time `json:"created_at,omitempty"`
 	Deactivated bool `json:"deactivated,omitempty"`
 	DepositHalted bool `json:"deposit_halted,omitempty"`
 	MarginBalances MarginBalances `json:"margin_balances,omitempty"`
-	MaxAchEarlyAccessAmount float64 `json:"max_ach_early_access_amount,omitempty"`
+	MaxAchEarlyAccessAmount string `json:"max_ach_early_access_amount,omitempty"`
 	OnlyPositionClosingTrades bool `json:"only_position_closing_trades,omitempty"`
 	Portfolio string `json:"portfolio,omitempty"`
 	Positions string `json:"positions,omitempty"`
-	Sma float64 `json:"sma,omitempty"`
-	SmaHeldForOrders float64 `json:"sma_held_for_orders,omitempty"`
+	Sma string `json:"sma,omitempty"`
+	SmaHeldForOrders string `json:"sma_held_for_orders,omitempty"`
 	SweepEnabled bool `json:"sweep_enabled,omitempty"`
 	Type AccountType `json:"type,omitempty"`
-	UnclearedDeposits float64 `json:"uncleared_deposits,omitempty"`
-	UnsettledFunds float64 `json:"unsettled_funds,omitempty"`
+	UnclearedDeposits string `json:"uncleared_deposits,omitempty"`
+	UnsettledFunds string `json:"unsettled_funds,omitempty"`
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	Url string `json:"url,omitempty"`
 	User string `json:"user,omitempty"`

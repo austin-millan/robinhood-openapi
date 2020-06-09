@@ -15,15 +15,15 @@ import (
 // Position struct for Position
 type Position struct {
 	Account string `json:"account,omitempty"`
-	AverageBuyPrice float64 `json:"average_buy_price,omitempty"`
+	AverageBuyPrice string `json:"average_buy_price,omitempty"`
 	CreatedAt time.Time `json:"created_at,omitempty"`
 	Instrument string `json:"instrument,omitempty"`
-	IntradayAverageBuyPrice float64 `json:"intraday_average_buy_price,omitempty"`
-	IntradayQuantity float64 `json:"intraday_quantity,omitempty"`
-	Quantity float64 `json:"quantity,omitempty"`
-	SharesHeldForBuys float64 `json:"shares_held_for_buys,omitempty"`
-	SharesHeldForSells float64 `json:"shares_held_for_sells,omitempty"`
-	SharesHeldForStockGrants float64 `json:"shares_held_for_stock_grants,omitempty"`
+	IntradayAverageBuyPrice string `json:"intraday_average_buy_price,omitempty"`
+	IntradayQuantity string `json:"intraday_quantity,omitempty"`
+	Quantity string `json:"quantity,omitempty"`
+	SharesHeldForBuys string `json:"shares_held_for_buys,omitempty"`
+	SharesHeldForSells string `json:"shares_held_for_sells,omitempty"`
+	SharesHeldForStockGrants string `json:"shares_held_for_stock_grants,omitempty"`
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 	Url string `json:"url,omitempty"`
 }

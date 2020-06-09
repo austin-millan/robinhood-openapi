@@ -11,16 +11,16 @@
 package openapi
 // FundamentalsData struct for FundamentalsData
 type FundamentalsData struct {
-	AverageVolume float64 `json:"average_volume,omitempty"`
+	AverageVolume string `json:"average_volume,omitempty"`
 	Description string `json:"description,omitempty"`
-	DividendYield float64 `json:"dividend_yield,omitempty"`
-	High float64 `json:"high,omitempty"`
-	High52Weeks float64 `json:"high_52_weeks,omitempty"`
+	DividendYield string `json:"dividend_yield,omitempty"`
+	High string `json:"high,omitempty"`
+	High52Weeks string `json:"high_52_weeks,omitempty"`
 	Instrument string `json:"instrument,omitempty"`
-	Low float64 `json:"low,omitempty"`
-	Low52Weeks float64 `json:"low_52_weeks,omitempty"`
-	MarketCap float64 `json:"market_cap,omitempty"`
-	Open float64 `json:"open,omitempty"`
-	PeRatio float64 `json:"pe_ratio,omitempty"`
-	Volume float64 `json:"volume,omitempty"`
+	Low string `json:"low,omitempty"`
+	Low52Weeks string `json:"low_52_weeks,omitempty"`
+	MarketCap string `json:"market_cap,omitempty"`
+	Open string `json:"open,omitempty"`
+	PeRatio string `json:"pe_ratio,omitempty"`
+	Volume string `json:"volume,omitempty"`
 }

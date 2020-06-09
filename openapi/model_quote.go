@@ -13,14 +13,14 @@ package openapi
 type Quote struct {
 	AdjustedPreviousClose string `json:"adjusted_previous_close,omitempty"`
 	AskPrice string `json:"ask_price,omitempty"`
-	AskSize string `json:"ask_size,omitempty"`
+	AskSize float32 `json:"ask_size,omitempty"`
 	BidPrice string `json:"bid_price,omitempty"`
-	BidSize string `json:"bid_size,omitempty"`
+	BidSize float32 `json:"bid_size,omitempty"`
 	LastExtendedHoursTradePrice string `json:"last_extended_hours_trade_price,omitempty"`
 	LastTradePrice string `json:"last_trade_price,omitempty"`
 	PreviousClose string `json:"previous_close,omitempty"`
 	PreviousCloseDate string `json:"previous_close_date,omitempty"`
 	Symbol string `json:"symbol,omitempty"`
-	TradingHalted string `json:"trading_halted,omitempty"`
+	TradingHalted bool `json:"trading_halted,omitempty"`
 	UpdatedAt string `json:"updated_at,omitempty"`
 }

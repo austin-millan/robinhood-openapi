@@ -11,7 +11,7 @@
 package openapi
 // MultipleOfFundamentalsData struct for MultipleOfFundamentalsData
 type MultipleOfFundamentalsData struct {
-	Count int32 `json:"count,omitempty"`
+	Count string `json:"count,omitempty"`
 	Next string `json:"next,omitempty"`
 	Previous string `json:"previous,omitempty"`
 	Results []FundamentalsData `json:"results,omitempty"`

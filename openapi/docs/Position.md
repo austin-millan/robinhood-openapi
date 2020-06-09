@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Account** | **string** |  | [optional] 
-**AverageBuyPrice** | **float64** |  | [optional] 
+**AverageBuyPrice** | **string** |  | [optional] 
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **Instrument** | **string** |  | [optional] 
-**IntradayAverageBuyPrice** | **float64** |  | [optional] 
-**IntradayQuantity** | **float64** |  | [optional] 
-**Quantity** | **float64** |  | [optional] 
-**SharesHeldForBuys** | **float64** |  | [optional] 
-**SharesHeldForSells** | **float64** |  | [optional] 
-**SharesHeldForStockGrants** | **float64** |  | [optional] 
+**IntradayAverageBuyPrice** | **string** |  | [optional] 
+**IntradayQuantity** | **string** |  | [optional] 
+**Quantity** | **string** |  | [optional] 
+**SharesHeldForBuys** | **string** |  | [optional] 
+**SharesHeldForSells** | **string** |  | [optional] 
+**SharesHeldForStockGrants** | **string** |  | [optional] 
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
 **Url** | **string** |  | [optional] 
 

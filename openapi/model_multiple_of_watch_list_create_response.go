@@ -11,7 +11,7 @@
 package openapi
 // MultipleOfWatchListCreateResponse struct for MultipleOfWatchListCreateResponse
 type MultipleOfWatchListCreateResponse struct {
-	Count int32 `json:"count,omitempty"`
+	Count string `json:"count,omitempty"`
 	Next string `json:"next,omitempty"`
 	Previous string `json:"previous,omitempty"`
 	Results []WatchListCreateResponse `json:"results,omitempty"`

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **CountryOfResidence** | **string** |  | [optional] 
 **DateOfBirth** | **string** |  | [optional] 
 **MaritalStatus** | [**MaritalStatus**](MaritalStatus.md) |  | [optional] 
-**NumberDependents** | **int32** |  | [optional] 
+**NumberDependents** | **string** |  | [optional] 
 **PhoneNumber** | **string** |  | [optional] 
 **State** | **string** |  | [optional] 
 **TaxIdSsn** | **string** |  | [optional] 

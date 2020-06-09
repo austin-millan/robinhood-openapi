@@ -16,9 +16,9 @@ import (
 type QuoteData struct {
 	AdjustedPreviousClose string `json:"adjusted_previous_close,omitempty"`
 	AskPrice string `json:"ask_price,omitempty"`
-	AskSize int32 `json:"ask_size,omitempty"`
-	BidPrice float64 `json:"bid_price,omitempty"`
-	BidSize int32 `json:"bid_size,omitempty"`
+	AskSize string `json:"ask_size,omitempty"`
+	BidPrice string `json:"bid_price,omitempty"`
+	BidSize string `json:"bid_size,omitempty"`
 	LastExtendedHoursTradePrice string `json:"last_extended_hours_trade_price,omitempty"`
 	LastTradePrice string `json:"last_trade_price,omitempty"`
 	PreviousClose string `json:"previous_close,omitempty"`

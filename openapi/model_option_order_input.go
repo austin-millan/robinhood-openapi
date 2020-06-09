@@ -12,7 +12,8 @@ package openapi
 // OptionOrderInput struct for OptionOrderInput
 type OptionOrderInput struct {
 	Account string `json:"account,omitempty"`
-	Direction string `json:"direction,omitempty"`
+	Direction Direction `json:"direction,omitempty"`
+	Legs []Leg `json:"legs,omitempty"`
 	OverrideDayTradeChecks bool `json:"override_day_trade_checks,omitempty"`
 	OverrideDtbpChecks bool `json:"override_dtbp_checks,omitempty"`
 	Price string `json:"price,omitempty"`
@@ -20,5 +21,5 @@ type OptionOrderInput struct {
 	RefId string `json:"ref_id,omitempty"`
 	TimeInForce TimeInForce `json:"time_in_force,omitempty"`
 	Trigger Trigger `json:"trigger,omitempty"`
-	Type string `json:"type,omitempty"`
+	Type ExecutionType `json:"type,omitempty"`
 }

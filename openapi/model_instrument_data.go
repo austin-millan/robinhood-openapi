@@ -13,14 +13,14 @@ package openapi
 type InstrumentData struct {
 	BloombergUnique string `json:"bloomberg_unique,omitempty"`
 	Country string `json:"country,omitempty"`
-	DayTradeRatio float64 `json:"day_trade_ratio,omitempty"`
+	DayTradeRatio string `json:"day_trade_ratio,omitempty"`
 	Fundamentals string `json:"fundamentals,omitempty"`
 	Id string `json:"id,omitempty"`
 	ListDate string `json:"list_date,omitempty"`
-	MaintenanceRatio float64 `json:"maintenance_ratio,omitempty"`
-	MarginInitialRatio float64 `json:"margin_initial_ratio,omitempty"`
+	MaintenanceRatio string `json:"maintenance_ratio,omitempty"`
+	MarginInitialRatio string `json:"margin_initial_ratio,omitempty"`
 	Market string `json:"market,omitempty"`
-	MinTickSize float64 `json:"min_tick_size,omitempty"`
+	MinTickSize string `json:"min_tick_size,omitempty"`
 	Name string `json:"name,omitempty"`
 	Quote string `json:"quote,omitempty"`
 	SimpleName string `json:"simple_name,omitempty"`
@@ -28,7 +28,7 @@ type InstrumentData struct {
 	State InstrumentState `json:"state,omitempty"`
 	Symbol string `json:"symbol,omitempty"`
 	Tradability string `json:"tradability,omitempty"`
-	Tradeable string `json:"tradeable,omitempty"`
+	Tradeable bool `json:"tradeable,omitempty"`
 	Type string `json:"type,omitempty"`
 	Url string `json:"url,omitempty"`
 }
