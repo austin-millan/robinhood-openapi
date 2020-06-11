@@ -1691,6 +1691,20 @@ components:
           type: array
       title: PaginatedAccountInfo
       type: object
+    PaginatedOptionInstrument:
+      properties:
+        count:
+          type: string
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/OptionInstrument'
+          type: array
+      title: PaginatedOptionInstrument
+      type: object
     PaginatedFundamentalsData:
       properties:
         count:

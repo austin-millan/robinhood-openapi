@@ -109,6 +109,7 @@ Class | Method | HTTP request | Description
  - [PaginatedInstrumentSplit](docs/PaginatedInstrumentSplit.md)
  - [PaginatedMarketData](docs/PaginatedMarketData.md)
  - [PaginatedMovers](docs/PaginatedMovers.md)
+ - [PaginatedOptionInstrument](docs/PaginatedOptionInstrument.md)
  - [PaginatedOrder](docs/PaginatedOrder.md)
  - [PaginatedPosition](docs/PaginatedPosition.md)
  - [PaginatedQuoteData](docs/PaginatedQuoteData.md)
