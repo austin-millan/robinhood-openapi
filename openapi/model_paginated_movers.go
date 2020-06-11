@@ -9,10 +9,10 @@
  */
 
 package openapi
-// MultipleOfWatchListCreateResponse struct for MultipleOfWatchListCreateResponse
-type MultipleOfWatchListCreateResponse struct {
+// PaginatedMovers struct for PaginatedMovers
+type PaginatedMovers struct {
 	Count string `json:"count,omitempty"`
 	Next string `json:"next,omitempty"`
 	Previous string `json:"previous,omitempty"`
-	Results []WatchListCreateResponse `json:"results,omitempty"`
+	Results []map[string]interface{} `json:"results,omitempty"`
 }

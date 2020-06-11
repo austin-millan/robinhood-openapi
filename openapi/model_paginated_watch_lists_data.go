@@ -9,10 +9,10 @@
  */
 
 package openapi
-// MultipleOfOrder struct for MultipleOfOrder
-type MultipleOfOrder struct {
+// PaginatedWatchListsData struct for PaginatedWatchListsData
+type PaginatedWatchListsData struct {
 	Count string `json:"count,omitempty"`
 	Next string `json:"next,omitempty"`
 	Previous string `json:"previous,omitempty"`
-	Results []Order `json:"results,omitempty"`
+	Results []WatchListsData `json:"results,omitempty"`
 }

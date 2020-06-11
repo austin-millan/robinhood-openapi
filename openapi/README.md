@@ -32,37 +32,36 @@ All URIs are relative to *http://api.robinhood.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AccountsApi* | [**GetAllPositionsUsingGET**](docs/AccountsApi.md#getallpositionsusingget) | **Get** /accounts/{accountId}/positions/ | getAllPositions
-*AccountsApi* | [**GetAllUsingGET**](docs/AccountsApi.md#getallusingget) | **Get** /accounts/ | getAll
-*AccountsApi* | [**GetPortFolioUsingGET**](docs/AccountsApi.md#getportfoliousingget) | **Get** /accounts/{accountId}/portfolio/ | getPortFolio
-*AccountsApi* | [**GetPositionUsingGET**](docs/AccountsApi.md#getpositionusingget) | **Get** /accounts/{accountId}/positions/{positionId}/ | getPosition
-*AuthenticationApi* | [**LoginUsingPOST**](docs/AuthenticationApi.md#loginusingpost) | **Post** /api-token-auth/ | login
-*AuthenticationApi* | [**LogoutUsingPOST**](docs/AuthenticationApi.md#logoutusingpost) | **Post** /api-token-logout/ | logout
-*DividendsApi* | [**GetDividendUsingGET**](docs/DividendsApi.md#getdividendusingget) | **Get** /dividends/{id}/ | getDividend
-*FundamentalsApi* | [**GetFundamentalsUsingGET**](docs/FundamentalsApi.md#getfundamentalsusingget) | **Get** /fundamentals/{symbol}/ | getFundamentals
-*FundamentalsApi* | [**QueryUsingGET**](docs/FundamentalsApi.md#queryusingget) | **Get** /fundamentals/ | query
-*InstrumentsApi* | [**GetAllUsingGET1**](docs/InstrumentsApi.md#getallusingget1) | **Get** /instruments | getAll
-*InstrumentsApi* | [**GetSplitsUsingGET**](docs/InstrumentsApi.md#getsplitsusingget) | **Get** /instruments/{instrument_id}/splits/ | getSplits
-*InstrumentsApi* | [**GetUsingGET**](docs/InstrumentsApi.md#getusingget) | **Get** /instruments/{instrument_id}/ | get
-*InstrumentsApi* | [**QueryUsingGET1**](docs/InstrumentsApi.md#queryusingget1) | **Get** /instruments/ | query
-*MarketsApi* | [**GetAllUsingGET2**](docs/MarketsApi.md#getallusingget2) | **Get** /markets | getAll
-*MarketsApi* | [**GetMArketHoursUsingGET**](docs/MarketsApi.md#getmarkethoursusingget) | **Get** /markets/{mic}/hours/{date}/ | getMArketHours
-*MoversApi* | [**GetMoversUsingGET**](docs/MoversApi.md#getmoversusingget) | **Get** /midlands/movers/sp500/ | getMovers
-*OrderApi* | [**CancelUsingPOST**](docs/OrderApi.md#cancelusingpost) | **Post** /orders/{order_id}/cancel/ | cancel
-*OrderApi* | [**GetAllUsingGET3**](docs/OrderApi.md#getallusingget3) | **Get** /orders/ | getAll
-*OrderApi* | [**GetOrderUsingGET**](docs/OrderApi.md#getorderusingget) | **Get** /orders/{order_id}/ | getOrder
-*OrderApi* | [**PlaceOrderUsingPOST**](docs/OrderApi.md#placeorderusingpost) | **Post** /orders/ | placeOrder
-*QuoteApi* | [**GetQuoteUsingGET**](docs/QuoteApi.md#getquoteusingget) | **Get** /quotes/{symbol}/ | getQuote
-*QuoteApi* | [**GetQuotesUsingGET**](docs/QuoteApi.md#getquotesusingget) | **Get** /quotes/ | getQuotes
-*UserApi* | [**GetBasicInfoUsingGET**](docs/UserApi.md#getbasicinfousingget) | **Get** /user/basic_info/ | getBasicInfo
-*UserApi* | [**GetInvestmentProfileUsingGET**](docs/UserApi.md#getinvestmentprofileusingget) | **Get** /user/investment_profile/ | getInvestmentProfile
-*UserApi* | [**GetUserIdUsingGET**](docs/UserApi.md#getuseridusingget) | **Get** /user/id/ | getUserId
-*UserApi* | [**GetUserUsingGET**](docs/UserApi.md#getuserusingget) | **Get** /user/ | getUser
-*WatchlistsApi* | [**AddUsingPOST**](docs/WatchlistsApi.md#addusingpost) | **Post** /watchlists/Default/bulk_add/ | add
-*WatchlistsApi* | [**CreateUsingPOST**](docs/WatchlistsApi.md#createusingpost) | **Post** /watchlists/ | create
-*WatchlistsApi* | [**DeleteUsingDELETE**](docs/WatchlistsApi.md#deleteusingdelete) | **Delete** /watchlists/{name}/{instrumentId} | delete
-*WatchlistsApi* | [**GetAllUsingGET4**](docs/WatchlistsApi.md#getallusingget4) | **Get** /watchlists/ | getAll
-*WatchlistsApi* | [**GetUsingGET1**](docs/WatchlistsApi.md#getusingget1) | **Get** /watchlists/{name}/ | get
+*AccountsApi* | [**GetAccounts**](docs/AccountsApi.md#getaccounts) | **Get** /accounts/ | getAccounts
+*AccountsApi* | [**GetPortfolio**](docs/AccountsApi.md#getportfolio) | **Get** /accounts/{accountId}/portfolio/ | getPortfolio
+*AccountsApi* | [**GetPosition**](docs/AccountsApi.md#getposition) | **Get** /accounts/{accountId}/positions/{positionId}/ | getPosition
+*AccountsApi* | [**GetPositions**](docs/AccountsApi.md#getpositions) | **Get** /accounts/{accountId}/positions/ | getPositions
+*AuthenticationApi* | [**Login**](docs/AuthenticationApi.md#login) | **Post** /api-token-auth/ | login
+*AuthenticationApi* | [**Logout**](docs/AuthenticationApi.md#logout) | **Post** /api-token-logout/ | logout
+*DividendsApi* | [**GetDividend**](docs/DividendsApi.md#getdividend) | **Get** /dividends/{id}/ | getDividend
+*FundamentalsApi* | [**GetFundamentals**](docs/FundamentalsApi.md#getfundamentals) | **Get** /fundamentals/ | getFundamentals
+*FundamentalsApi* | [**GetSymbolFundamentals**](docs/FundamentalsApi.md#getsymbolfundamentals) | **Get** /fundamentals/{symbol}/ | getSymbolFundamentals
+*InstrumentsApi* | [**GetInstrument**](docs/InstrumentsApi.md#getinstrument) | **Get** /instruments/{instrument_id}/ | getInstrument
+*InstrumentsApi* | [**GetInstrumentSplits**](docs/InstrumentsApi.md#getinstrumentsplits) | **Get** /instruments/{instrument_id}/splits/ | getInstrumentSplits
+*InstrumentsApi* | [**GetInstruments**](docs/InstrumentsApi.md#getinstruments) | **Get** /instruments/ | getInstruments
+*MarketsApi* | [**GetMArketHours**](docs/MarketsApi.md#getmarkethours) | **Get** /markets/{mic}/hours/{date}/ | getMArketHours
+*MarketsApi* | [**GetMarkets**](docs/MarketsApi.md#getmarkets) | **Get** /markets | getMarkets
+*MoversApi* | [**GetMovers**](docs/MoversApi.md#getmovers) | **Get** /midlands/movers/sp500/ | getMovers
+*OrderApi* | [**CancelOrder**](docs/OrderApi.md#cancelorder) | **Post** /orders/{order_id}/cancel/ | cancelOrder
+*OrderApi* | [**GetOrder**](docs/OrderApi.md#getorder) | **Get** /orders/{order_id}/ | getOrder
+*OrderApi* | [**GetOrders**](docs/OrderApi.md#getorders) | **Get** /orders/ | getOrders
+*OrderApi* | [**PlaceOrder**](docs/OrderApi.md#placeorder) | **Post** /orders/ | placeOrder
+*QuoteApi* | [**GetQuotes**](docs/QuoteApi.md#getquotes) | **Get** /quotes/ | getQuotes
+*QuoteApi* | [**GetSymbolQuote**](docs/QuoteApi.md#getsymbolquote) | **Get** /quotes/{symbol}/ | getSymbolQuote
+*UserApi* | [**GetBasicUserInfo**](docs/UserApi.md#getbasicuserinfo) | **Get** /user/basic_info/ | getBasicUserInfo
+*UserApi* | [**GetInvestmentProfile**](docs/UserApi.md#getinvestmentprofile) | **Get** /user/investment_profile/ | getInvestmentProfile
+*UserApi* | [**GetUser**](docs/UserApi.md#getuser) | **Get** /user/ | getUser
+*UserApi* | [**GetUserID**](docs/UserApi.md#getuserid) | **Get** /user/id/ | getUserID
+*WatchlistsApi* | [**BulkAddWatchlists**](docs/WatchlistsApi.md#bulkaddwatchlists) | **Post** /watchlists/Default/bulk_add/ | bulkAddWatchlists
+*WatchlistsApi* | [**CreateWatchlist**](docs/WatchlistsApi.md#createwatchlist) | **Post** /watchlists/ | createWatchlist
+*WatchlistsApi* | [**DeleteInstrumentFromWatchlist**](docs/WatchlistsApi.md#deleteinstrumentfromwatchlist) | **Delete** /watchlists/{name}/{instrumentId} | deleteInstrumentFromWatchlist
+*WatchlistsApi* | [**GetWatchlistByName**](docs/WatchlistsApi.md#getwatchlistbyname) | **Get** /watchlists/{name}/ | getWatchlistByName
+*WatchlistsApi* | [**GetWatchlists**](docs/WatchlistsApi.md#getwatchlists) | **Get** /watchlists/ | getWatchlists
 
 
 ## Documentation For Models
@@ -97,17 +96,6 @@ Class | Method | HTTP request | Description
  - [MarketData](docs/MarketData.md)
  - [MarketHours](docs/MarketHours.md)
  - [MinTicks](docs/MinTicks.md)
- - [MultipleOfAccountInfo](docs/MultipleOfAccountInfo.md)
- - [MultipleOfFundamentalsData](docs/MultipleOfFundamentalsData.md)
- - [MultipleOfInstrumentData](docs/MultipleOfInstrumentData.md)
- - [MultipleOfInstrumentSplit](docs/MultipleOfInstrumentSplit.md)
- - [MultipleOfMarketData](docs/MultipleOfMarketData.md)
- - [MultipleOfMovers](docs/MultipleOfMovers.md)
- - [MultipleOfOrder](docs/MultipleOfOrder.md)
- - [MultipleOfPosition](docs/MultipleOfPosition.md)
- - [MultipleOfQuoteData](docs/MultipleOfQuoteData.md)
- - [MultipleOfWatchListCreateResponse](docs/MultipleOfWatchListCreateResponse.md)
- - [MultipleOfWatchListsData](docs/MultipleOfWatchListsData.md)
  - [OptionChain](docs/OptionChain.md)
  - [OptionInstrument](docs/OptionInstrument.md)
  - [OptionOrderInput](docs/OptionOrderInput.md)
@@ -115,6 +103,17 @@ Class | Method | HTTP request | Description
  - [Order](docs/Order.md)
  - [OrderAction](docs/OrderAction.md)
  - [OrderState](docs/OrderState.md)
+ - [PaginatedAccountInfo](docs/PaginatedAccountInfo.md)
+ - [PaginatedFundamentalsData](docs/PaginatedFundamentalsData.md)
+ - [PaginatedInstrumentData](docs/PaginatedInstrumentData.md)
+ - [PaginatedInstrumentSplit](docs/PaginatedInstrumentSplit.md)
+ - [PaginatedMarketData](docs/PaginatedMarketData.md)
+ - [PaginatedMovers](docs/PaginatedMovers.md)
+ - [PaginatedOrder](docs/PaginatedOrder.md)
+ - [PaginatedPosition](docs/PaginatedPosition.md)
+ - [PaginatedQuoteData](docs/PaginatedQuoteData.md)
+ - [PaginatedWatchListCreateResponse](docs/PaginatedWatchListCreateResponse.md)
+ - [PaginatedWatchListsData](docs/PaginatedWatchListsData.md)
  - [Portfolio](docs/Portfolio.md)
  - [Position](docs/Position.md)
  - [Quote](docs/Quote.md)

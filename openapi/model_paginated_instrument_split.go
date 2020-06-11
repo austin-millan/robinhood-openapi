@@ -9,10 +9,10 @@
  */
 
 package openapi
-// MultipleOfMovers struct for MultipleOfMovers
-type MultipleOfMovers struct {
+// PaginatedInstrumentSplit struct for PaginatedInstrumentSplit
+type PaginatedInstrumentSplit struct {
 	Count string `json:"count,omitempty"`
 	Next string `json:"next,omitempty"`
 	Previous string `json:"previous,omitempty"`
-	Results []map[string]interface{} `json:"results,omitempty"`
+	Results []InstrumentSplit `json:"results,omitempty"`
 }

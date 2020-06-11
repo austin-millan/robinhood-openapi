@@ -39,15 +39,15 @@ paths:
     get:
       tags:
         - accounts
-      summary: getAll
-      operationId: getAllUsingGET
+      summary: getAccounts
+      operationId: GetAccounts
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MultipleOfAccountInfo'
+                $ref: '#/components/schemas/PaginatedAccountInfo'
         '401':
           description: Unauthorized
         '403':
@@ -59,8 +59,8 @@ paths:
     get:
       tags:
         - accounts
-      summary: getPortFolio
-      operationId: getPortFolioUsingGET
+      summary: getPortfolio
+      operationId: getPortfolio
       parameters:
         - name: accountId
           in: path
@@ -86,8 +86,8 @@ paths:
     get:
       tags:
         - accounts
-      summary: getAllPositions
-      operationId: getAllPositionsUsingGET
+      summary: getPositions
+      operationId: getPositions
       parameters:
         - name: accountId
           in: path
@@ -107,7 +107,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MultipleOfPosition'
+                $ref: '#/components/schemas/PaginatedPosition'
         '401':
           description: Unauthorized
         '403':
@@ -120,7 +120,7 @@ paths:
       tags:
         - accounts
       summary: getPosition
-      operationId: getPositionUsingGET
+      operationId: getPosition
       parameters:
         - name: accountId
           in: path
@@ -153,7 +153,7 @@ paths:
       tags:
         - authentication
       summary: login
-      operationId: loginUsingPOST
+      operationId: login
       parameters:
         - name: mfa_code
           in: header # used to be requestData
@@ -194,7 +194,7 @@ paths:
       tags:
         - authentication
       summary: logout
-      operationId: logoutUsingPOST
+      operationId: logout
       parameters:
         - name: Authorization
           in: header
@@ -219,7 +219,7 @@ paths:
       tags:
         - dividends
       summary: getDividend
-      operationId: getDividendUsingGET
+      operationId: getDividend
       parameters:
         - name: id
           in: path
@@ -241,8 +241,8 @@ paths:
     get:
       tags:
         - fundamentals
-      summary: query
-      operationId: queryUsingGET
+      summary: getFundamentals
+      operationId: getFundamentals
       parameters:
         - name: symbols
           in: query
@@ -256,7 +256,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MultipleOfFundamentalsData'
+                $ref: '#/components/schemas/PaginatedFundamentalsData'
         '401':
           description: Unauthorized
         '403':
@@ -268,8 +268,8 @@ paths:
     get:
       tags:
         - fundamentals
-      summary: getFundamentals
-      operationId: getFundamentalsUsingGET
+      summary: getSymbolFundamentals
+      operationId: getSymbolFundamentals
       parameters:
         - name: symbol
           in: path
@@ -291,32 +291,12 @@ paths:
         '404':
           description: Not Found
       deprecated: false
-  /instruments:
-    get:
-      tags:
-        - instruments
-      summary: getAll
-      operationId: getAllUsingGET_1
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MultipleOfInstrumentData'
-        '401':
-          description: Unauthorized
-        '403':
-          description: Forbidden
-        '404':
-          description: Not Found
-      deprecated: false
   /instruments/:
     get:
       tags:
         - instruments
-      summary: query
-      operationId: queryUsingGET_1
+      summary: getInstruments
+      operationId: getInstruments
       parameters:
         - name: query
           in: query
@@ -330,7 +310,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MultipleOfInstrumentData'
+                $ref: '#/components/schemas/PaginatedInstrumentData'
         '401':
           description: Unauthorized
         '403':
@@ -342,8 +322,8 @@ paths:
     get:
       tags:
         - instruments
-      summary: get
-      operationId: getUsingGET
+      summary: getInstrument
+      operationId: getInstrument
       parameters:
         - name: instrument_id
           in: path
@@ -369,8 +349,8 @@ paths:
     get:
       tags:
         - instruments
-      summary: getSplits
-      operationId: getSplitsUsingGET
+      summary: getInstrumentSplits
+      operationId: getInstrumentSplits
       parameters:
         - name: instrument_id
           in: path
@@ -384,7 +364,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MultipleOfInstrumentSplit'
+                $ref: '#/components/schemas/PaginatedInstrumentSplit'
         '401':
           description: Unauthorized
         '403':
@@ -396,15 +376,15 @@ paths:
     get:
       tags:
         - markets
-      summary: getAll
-      operationId: getAllUsingGET_2
+      summary: getMarkets
+      operationId: getMarkets
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MultipleOfMarketData'
+                $ref: '#/components/schemas/PaginatedMarketData'
         '401':
           description: Unauthorized
         '403':
@@ -417,7 +397,7 @@ paths:
       tags:
         - markets
       summary: getMArketHours
-      operationId: getMArketHoursUsingGET
+      operationId: getMArketHours
       parameters:
         - name: date
           in: path
@@ -450,7 +430,7 @@ paths:
       tags:
         - movers
       summary: getMovers
-      operationId: getMoversUsingGET
+      operationId: getMovers
       parameters:
         - name: direction
           in: query
@@ -464,7 +444,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MultipleOfMovers'
+                $ref: '#/components/schemas/PaginatedMovers'
         '401':
           description: Unauthorized
         '403':
@@ -476,8 +456,8 @@ paths:
     get:
       tags:
         - order
-      summary: getAll
-      operationId: getAllUsingGET_3
+      summary: getOrders
+      operationId: getOrders
       parameters:
         - name: cursonr
           in: query
@@ -504,7 +484,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MultipleOfOrder'
+                $ref: '#/components/schemas/PaginatedOrder'
         '401':
           description: Unauthorized
         '403':
@@ -516,7 +496,7 @@ paths:
       tags:
         - order
       summary: placeOrder
-      operationId: placeOrderUsingPOST
+      operationId: placeOrder
       requestBody:
         content:
           application/json:
@@ -543,7 +523,7 @@ paths:
       tags:
         - order
       summary: getOrder
-      operationId: getOrderUsingGET
+      operationId: getOrder
       parameters:
         - name: order_id
           in: path
@@ -569,8 +549,8 @@ paths:
     post:
       tags:
         - order
-      summary: cancel
-      operationId: cancelUsingPOST
+      summary: cancelOrder
+      operationId: cancelOrder
       parameters:
         - name: order_id
           in: path
@@ -599,7 +579,7 @@ paths:
       tags:
         - quote
       summary: getQuotes
-      operationId: getQuotesUsingGET
+      operationId: getQuotes
       parameters:
         - name: symbols
           in: query
@@ -614,7 +594,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MultipleOfQuoteData'
+                $ref: '#/components/schemas/PaginatedQuoteData'
         '401':
           description: Unauthorized
         '403':
@@ -626,8 +606,8 @@ paths:
     get:
       tags:
         - quote
-      summary: getQuote
-      operationId: getQuoteUsingGET
+      summary: getSymbolQuote
+      operationId: getSymbolQuote
       parameters:
         - name: symbol
           in: path
@@ -654,7 +634,7 @@ paths:
       tags:
         - user
       summary: getUser
-      operationId: getUserUsingGET
+      operationId: getUser
       responses:
         '200':
           description: OK
@@ -673,8 +653,8 @@ paths:
     get:
       tags:
         - user
-      summary: getBasicInfo
-      operationId: getBasicInfoUsingGET
+      summary: getBasicUserInfo
+      operationId: getBasicUserInfo
       responses:
         '200':
           description: OK
@@ -693,8 +673,8 @@ paths:
     get:
       tags:
         - user
-      summary: getUserId
-      operationId: getUserIdUsingGET
+      summary: getUserID
+      operationId: getUserID
       responses:
         '200':
           description: OK
@@ -714,7 +694,7 @@ paths:
       tags:
         - user
       summary: getInvestmentProfile
-      operationId: getInvestmentProfileUsingGET
+      operationId: getInvestmentProfile
       responses:
         '200':
           description: OK
@@ -733,15 +713,15 @@ paths:
     get:
       tags:
         - watchlists
-      summary: getAll
-      operationId: getAllUsingGET_4
+      summary: getWatchlists
+      operationId: getWatchlists
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MultipleOfWatchListCreateResponse'
+                $ref: '#/components/schemas/PaginatedWatchListCreateResponse'
         '401':
           description: Unauthorized
         '403':
@@ -752,8 +732,8 @@ paths:
     post:
       tags:
         - watchlists
-      summary: create
-      operationId: createUsingPOST
+      summary: createWatchlist
+      operationId: createWatchlist
       parameters:
         - name: name
           in: query
@@ -781,8 +761,8 @@ paths:
     post:
       tags:
         - watchlists
-      summary: add
-      operationId: addUsingPOST
+      summary: bulkAddWatchlists
+      operationId: bulkAddWatchlists
       parameters:
         - name: symbols
           in: query
@@ -810,8 +790,8 @@ paths:
     get:
       tags:
         - watchlists
-      summary: get
-      operationId: getUsingGET_1
+      summary: getWatchlistByName
+      operationId: getWatchlistByName
       parameters:
         - name: name
           in: path
@@ -825,7 +805,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MultipleOfWatchListsData'
+                $ref: '#/components/schemas/PaginatedWatchListsData'
         '401':
           description: Unauthorized
         '403':
@@ -837,8 +817,8 @@ paths:
     delete:
       tags:
         - watchlists
-      summary: delete
-      operationId: deleteUsingDELETE
+      summary: deleteInstrumentFromWatchlist
+      operationId: deleteInstrumentFromWatchlist
       parameters:
         - name: instrumentId
           in: path
@@ -858,7 +838,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MultipleOfWatchListsData'
+                $ref: '#/components/schemas/PaginatedWatchListsData'
         '204':
           description: No Content
         '401':
@@ -1072,11 +1052,11 @@ components:
         side:
           $ref: '#/components/schemas/Side'
         time_in_force:
+          $ref: '#/components/schemas/TimeInForce'
           title: time_in_force
-          $ref: '#/components/schemas/TimeInForce' 
         type:
+          $ref: '#/components/schemas/ExecutionType'
           title: type
-          $ref: '#/components/schemas/ExecutionType' 
       type: object
     CryptoOrderOptions:
       properties:
@@ -1117,8 +1097,8 @@ components:
           title: stop_price
           type: string
         time_in_force:
+          $ref: '#/components/schemas/TimeInForce'
           title: time_in_force
-          $ref: '#/components/schemas/TimeInForce' 
         type:
           title: type
           type: string
@@ -1165,8 +1145,8 @@ components:
           title: stop_price
           type: string
         time_in_force:
+          $ref: '#/components/schemas/TimeInForce'
           title: time_in_force
-          $ref: '#/components/schemas/TimeInForce' 
         type:
           title: type
           type: string
@@ -1186,6 +1166,11 @@ components:
           type: string
       title: CryptoPortfolio
       type: object
+    Direction:
+      enum:
+        - debit
+        - credit
+      type: string
     Execution:
       properties:
         id:
@@ -1466,159 +1451,6 @@ components:
     Movers:
       title: Movers
       type: object
-    MultipleOfAccountInfo:
-      properties:
-        count:
-          type: string
-        next:
-          type: string
-        previous:
-          type: string
-        results:
-          items:
-            $ref: '#/components/schemas/AccountInfo'
-          type: array
-      title: MultipleOfAccountInfo
-      type: object
-    MultipleOfFundamentalsData:
-      properties:
-        count:
-          type: string
-        next:
-          type: string
-        previous:
-          type: string
-        results:
-          items:
-            $ref: '#/components/schemas/FundamentalsData'
-          type: array
-      title: MultipleOfFundamentalsData
-      type: object
-    MultipleOfInstrumentData:
-      properties:
-        count:
-          type: string
-        next:
-          type: string
-        previous:
-          type: string
-        results:
-          items:
-            $ref: '#/components/schemas/InstrumentData'
-          type: array
-      title: MultipleOfInstrumentData
-      type: object
-    MultipleOfInstrumentSplit:
-      properties:
-        count:
-          type: string
-        next:
-          type: string
-        previous:
-          type: string
-        results:
-          items:
-            $ref: '#/components/schemas/InstrumentSplit'
-          type: array
-      title: MultipleOfInstrumentSplit
-      type: object
-    MultipleOfMarketData:
-      properties:
-        count:
-          type: string
-        next:
-          type: string
-        previous:
-          type: string
-        results:
-          items:
-            $ref: '#/components/schemas/MarketData'
-          type: array
-      title: MultipleOfMarketData
-      type: object
-    MultipleOfMovers:
-      properties:
-        count:
-          type: string
-        next:
-          type: string
-        previous:
-          type: string
-        results:
-          items:
-            $ref: '#/components/schemas/Movers'
-          type: array
-      title: MultipleOfMovers
-      type: object
-    MultipleOfOrder:
-      properties:
-        count:
-          type: string
-        next:
-          type: string
-        previous:
-          type: string
-        results:
-          items:
-            $ref: '#/components/schemas/Order'
-          type: array
-      type: object
-    MultipleOfPosition:
-      properties:
-        count:
-          type: string
-        next:
-          type: string
-        previous:
-          type: string
-        results:
-          items:
-            $ref: '#/components/schemas/Position'
-          type: array
-      title: MultipleOfPosition
-      type: object
-    MultipleOfQuoteData:
-      properties:
-        count:
-          type: string
-        next:
-          type: string
-        previous:
-          type: string
-        results:
-          items:
-            $ref: '#/components/schemas/QuoteData'
-          type: array
-      title: MultipleOfQuoteData
-      type: object
-    MultipleOfWatchListCreateResponse:
-      properties:
-        count:
-          type: string
-        next:
-          type: string
-        previous:
-          type: string
-        results:
-          items:
-            $ref: '#/components/schemas/WatchListCreateResponse'
-          type: array
-      title: MultipleOfWatchListCreateResponse
-      type: object
-    MultipleOfWatchListsData:
-      properties:
-        count:
-          type: string
-        next:
-          type: string
-        previous:
-          type: string
-        results:
-          items:
-            $ref: '#/components/schemas/WatchListsData'
-          type: array
-      title: MultipleOfWatchListsData
-      type: object
     OptionChain:
       properties:
         can_open_position:
@@ -1626,9 +1458,9 @@ components:
         cash_component:
           type: object
         expiration_dates:
-          type: array
           items:
             type: string
+          type: array
         id:
           title: id
           type: string
@@ -1640,7 +1472,7 @@ components:
           type: string
         underlying_instruments:
           items:
-            $ref:  "#/components/schemas/UnderlyingInstrument"
+            $ref: '#/components/schemas/UnderlyingInstrument'
           type: array
     OptionInstrument:
       properties:
@@ -1651,7 +1483,7 @@ components:
         created_at:
           type: string
         expiration_date:
-          format: date ## TODO
+          format: date
           type: string
         id:
           title: id
@@ -1700,8 +1532,8 @@ components:
         trigger:
           $ref: '#/components/schemas/Trigger'
         type:
-          title: type
           $ref: '#/components/schemas/ExecutionType'
+          title: type
       type: object
     OptionsMarketData:
       properties:
@@ -1845,6 +1677,159 @@ components:
         - canceled
         - failed
       type: string
+    PaginatedAccountInfo:
+      properties:
+        count:
+          type: string
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/AccountInfo'
+          type: array
+      title: PaginatedAccountInfo
+      type: object
+    PaginatedFundamentalsData:
+      properties:
+        count:
+          type: string
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/FundamentalsData'
+          type: array
+      title: PaginatedFundamentalsData
+      type: object
+    PaginatedInstrumentData:
+      properties:
+        count:
+          type: string
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/InstrumentData'
+          type: array
+      title: PaginatedInstrumentData
+      type: object
+    PaginatedInstrumentSplit:
+      properties:
+        count:
+          type: string
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/InstrumentSplit'
+          type: array
+      title: PaginatedInstrumentSplit
+      type: object
+    PaginatedMarketData:
+      properties:
+        count:
+          type: string
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/MarketData'
+          type: array
+      title: PaginatedMarketData
+      type: object
+    PaginatedMovers:
+      properties:
+        count:
+          type: string
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/Movers'
+          type: array
+      title: PaginatedMovers
+      type: object
+    PaginatedOrder:
+      properties:
+        count:
+          type: string
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/Order'
+          type: array
+      type: object
+    PaginatedPosition:
+      properties:
+        count:
+          type: string
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/Position'
+          type: array
+      title: PaginatedPosition
+      type: object
+    PaginatedQuoteData:
+      properties:
+        count:
+          type: string
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/QuoteData'
+          type: array
+      title: PaginatedQuoteData
+      type: object
+    PaginatedWatchListCreateResponse:
+      properties:
+        count:
+          type: string
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/WatchListCreateResponse'
+          type: array
+      title: PaginatedWatchListCreateResponse
+      type: object
+    PaginatedWatchListsData:
+      properties:
+        count:
+          type: string
+        next:
+          type: string
+        previous:
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/WatchListsData'
+          type: array
+      title: PaginatedWatchListsData
+      type: object
     Portfolio:
       properties:
         account:
@@ -1923,12 +1908,12 @@ components:
           type: string
         ask_size:
           format: int32
-          type: number
+          type: integer
         bid_price:
           type: string
         bid_size:
           format: int32
-          type: number
+          type: integer
         last_extended_hours_trade_price:
           type: string
         last_trade_price:
@@ -2129,8 +2114,3 @@ components:
         user:
           type: string
       type: object
-    Direction:
-      type: string
-      enum:
-        - debit
-        - credit

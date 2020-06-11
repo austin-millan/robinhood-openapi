@@ -9,10 +9,10 @@
  */
 
 package openapi
-// MultipleOfInstrumentData struct for MultipleOfInstrumentData
-type MultipleOfInstrumentData struct {
+// PaginatedFundamentalsData struct for PaginatedFundamentalsData
+type PaginatedFundamentalsData struct {
 	Count string `json:"count,omitempty"`
 	Next string `json:"next,omitempty"`
 	Previous string `json:"previous,omitempty"`
-	Results []InstrumentData `json:"results,omitempty"`
+	Results []FundamentalsData `json:"results,omitempty"`
 }

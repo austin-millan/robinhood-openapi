@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdjustedPreviousClose** | **string** |  | [optional] 
 **AskPrice** | **string** |  | [optional] 
-**AskSize** | **float32** |  | [optional] 
+**AskSize** | **int32** |  | [optional] 
 **BidPrice** | **string** |  | [optional] 
-**BidSize** | **float32** |  | [optional] 
+**BidSize** | **int32** |  | [optional] 
 **LastExtendedHoursTradePrice** | **string** |  | [optional] 
 **LastTradePrice** | **string** |  | [optional] 
 **PreviousClose** | **string** |  | [optional] 

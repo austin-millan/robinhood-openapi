@@ -9,10 +9,10 @@
  */
 
 package openapi
-// MultipleOfInstrumentSplit struct for MultipleOfInstrumentSplit
-type MultipleOfInstrumentSplit struct {
+// PaginatedOrder struct for PaginatedOrder
+type PaginatedOrder struct {
 	Count string `json:"count,omitempty"`
 	Next string `json:"next,omitempty"`
 	Previous string `json:"previous,omitempty"`
-	Results []InstrumentSplit `json:"results,omitempty"`
+	Results []Order `json:"results,omitempty"`
 }

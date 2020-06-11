@@ -1,4 +1,4 @@
-# MultipleOfAccountInfo
+# PaginatedAccountInfo
 
 ## Properties
 

@@ -9,10 +9,10 @@
  */
 
 package openapi
-// MultipleOfPosition struct for MultipleOfPosition
-type MultipleOfPosition struct {
+// PaginatedQuoteData struct for PaginatedQuoteData
+type PaginatedQuoteData struct {
 	Count string `json:"count,omitempty"`
 	Next string `json:"next,omitempty"`
 	Previous string `json:"previous,omitempty"`
-	Results []Position `json:"results,omitempty"`
+	Results []QuoteData `json:"results,omitempty"`
 }
