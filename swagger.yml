@@ -452,6 +452,32 @@ paths:
         '404':
           description: Not Found
       deprecated: false
+  "/options/orders":
+    get:
+      tags:
+        - order
+      summary: getOptionsOrders
+      operationId: getOptionsOrders
+      parameters:
+        - name: cursor
+          in: query
+          description: cursor
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetOptionOrdersResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
   /orders/:
     get:
       tags:
@@ -459,9 +485,9 @@ paths:
       summary: getOrders
       operationId: getOrders
       parameters:
-        - name: cursonr
+        - name: cursor
           in: query
-          description: cursonr
+          description: cursor
           required: false
           schema:
             type: string
@@ -1506,6 +1532,19 @@ components:
           type: string
         url:
           type: string
+    GetOptionOrdersResponse:
+      type: object
+      properties:
+        next:
+          type: string
+          example: https://api.robinhood.com/options/orders/?cursor=cD0yMDIwLTAzLTE5KzEzJTNBNDYlM0E1NS4yOTgwNzklMkIwMCUzQTAw
+        previous: 
+          type: string
+          format: nullable
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/OptionOrder'
     OptionOrder:
       type: object
       properties: 

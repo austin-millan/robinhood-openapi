@@ -48,6 +48,7 @@ Class | Method | HTTP request | Description
 *MarketsApi* | [**GetMarkets**](docs/MarketsApi.md#getmarkets) | **Get** /markets | getMarkets
 *MoversApi* | [**GetMovers**](docs/MoversApi.md#getmovers) | **Get** /midlands/movers/sp500/ | getMovers
 *OrderApi* | [**CancelOrder**](docs/OrderApi.md#cancelorder) | **Post** /orders/{order_id}/cancel/ | cancelOrder
+*OrderApi* | [**GetOptionsOrders**](docs/OrderApi.md#getoptionsorders) | **Get** /options/orders | getOptionsOrders
 *OrderApi* | [**GetOrder**](docs/OrderApi.md#getorder) | **Get** /orders/{order_id}/ | getOrder
 *OrderApi* | [**GetOrders**](docs/OrderApi.md#getorders) | **Get** /orders/ | getOrders
 *OrderApi* | [**PlaceOrder**](docs/OrderApi.md#placeorder) | **Post** /orders/ | placeOrder
@@ -83,6 +84,7 @@ Class | Method | HTTP request | Description
  - [Execution](docs/Execution.md)
  - [ExecutionType](docs/ExecutionType.md)
  - [FundamentalsData](docs/FundamentalsData.md)
+ - [GetOptionOrdersResponse](docs/GetOptionOrdersResponse.md)
  - [InstrumentData](docs/InstrumentData.md)
  - [InstrumentSplit](docs/InstrumentSplit.md)
  - [InstrumentState](docs/InstrumentState.md)
