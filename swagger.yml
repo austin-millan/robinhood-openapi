@@ -1506,6 +1506,118 @@ components:
           type: string
         url:
           type: string
+    OptionOrder:
+      type: object
+      properties: 
+        cancel_url: 
+          type: string
+          format: nullable
+        canceled_quantity: 
+          type: string
+          example: 0.00000
+        created_at: 
+          type: string
+          example: 2020-07-02T19:55:55.167080Z
+        direction: 
+          type: string
+          example: debit
+        id: 
+          type: string
+        legs: 
+          type: array
+          items: 
+            type: object
+            properties: 
+              executions: 
+                type: array
+                items: 
+                  type: object
+                  properties: 
+                    id: 
+                      type: string
+                      example: 40819043-074d-4d33-ae47-83133a6a1a3b
+                    price: 
+                      type: string
+                      example: 0.50000000
+                    quantity: 
+                      type: string
+                      example: 1.00000
+                    settlement_date: 
+                      type: string
+                      format: date
+                      example: 2020-07-06
+                    timestamp: 
+                      type: string
+                      example: 2020-07-02T19:55:55.602000Z
+              id: 
+                type: string
+                example: 29bdd1c0-0fbf-4d6d-967b-c4b85764b711
+              option: 
+                type: string
+                example: https://api.robinhood.com/options/instruments/e53b22e7-d71c-4bf7-852b-6032ee3b337d/
+              position_effect: 
+                type: string
+                example: open
+              ratio_quantity: 
+                type: number
+                example: 1
+              side: 
+                type: string
+                example: buy
+        pending_quantity: 
+          type: string
+          example: 0.00000
+        premium: 
+          type: string
+          example: 50.00000000
+        processed_premium: 
+          type: string
+          example: 100.00000000000000000
+        price: 
+          type: string
+          example: 0.50000000
+        processed_quantity: 
+          type: string
+          example: 2.00000
+        quantity: 
+          type: string
+          example: 2.00000
+        ref_id: 
+          type: string
+          example: 1599c41c-ac84-49d8-9eb0-5dabfa5d2829
+        state: 
+          type: string
+          example: filled
+        time_in_force: 
+          type: string
+          example: gfd
+        trigger: 
+          type: string
+          example: immediate
+        type: 
+          type: string
+          example: limit
+        updated_at: 
+          type: string
+          example: 2020-07-02T19:55:56.193242Z
+        chain_id: 
+          type: string
+          example: c277b118-58d9-4060-8dc5-a3b5898955cb
+        chain_symbol: 
+          type: string
+          example: SPY
+        response_category: 
+          type: string
+          format: nullable
+        opening_strategy: 
+          type: string
+          example: long_put
+        closing_strategy: 
+          type: string
+          format: nullable
+        stop_price: 
+          type: string
+          format: nullable
     OptionOrderInput:
       properties:
         account:
