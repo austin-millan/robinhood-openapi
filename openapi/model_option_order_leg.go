@@ -9,12 +9,12 @@
  */
 
 package openapi
-// OptionOrderLegs struct for OptionOrderLegs
-type OptionOrderLegs struct {
-	Executions []OptionOrderExecutions `json:"executions,omitempty"`
+// OptionOrderLeg struct for OptionOrderLeg
+type OptionOrderLeg struct {
+	Executions []OptionOrderLegExecutions `json:"executions,omitempty"`
 	Id string `json:"id,omitempty"`
 	Option string `json:"option,omitempty"`
-	PositionEffect string `json:"position_effect,omitempty"`
+	PositionEffect PositionEffect `json:"position_effect,omitempty"`
 	RatioQuantity float32 `json:"ratio_quantity,omitempty"`
-	Side string `json:"side,omitempty"`
+	Side Side `json:"side,omitempty"`
 }

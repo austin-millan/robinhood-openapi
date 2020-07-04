@@ -9,8 +9,8 @@
  */
 
 package openapi
-// OptionOrderExecutions struct for OptionOrderExecutions
-type OptionOrderExecutions struct {
+// OptionOrderLegExecutions struct for OptionOrderLegExecutions
+type OptionOrderLegExecutions struct {
 	Id string `json:"id,omitempty"`
 	Price string `json:"price,omitempty"`
 	Quantity string `json:"quantity,omitempty"`

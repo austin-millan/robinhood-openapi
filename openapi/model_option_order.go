@@ -14,9 +14,9 @@ type OptionOrder struct {
 	CancelUrl string `json:"cancel_url,omitempty"`
 	CanceledQuantity string `json:"canceled_quantity,omitempty"`
 	CreatedAt string `json:"created_at,omitempty"`
-	Direction string `json:"direction,omitempty"`
+	Direction Direction `json:"direction,omitempty"`
 	Id string `json:"id,omitempty"`
-	Legs []OptionOrderLegs `json:"legs,omitempty"`
+	Legs []OptionOrderLeg `json:"legs,omitempty"`
 	PendingQuantity string `json:"pending_quantity,omitempty"`
 	Premium string `json:"premium,omitempty"`
 	ProcessedPremium string `json:"processed_premium,omitempty"`
@@ -24,15 +24,15 @@ type OptionOrder struct {
 	ProcessedQuantity string `json:"processed_quantity,omitempty"`
 	Quantity string `json:"quantity,omitempty"`
 	RefId string `json:"ref_id,omitempty"`
-	State string `json:"state,omitempty"`
-	TimeInForce string `json:"time_in_force,omitempty"`
-	Trigger string `json:"trigger,omitempty"`
-	Type string `json:"type,omitempty"`
+	State OrderState `json:"state,omitempty"`
+	TimeInForce TimeInForce `json:"time_in_force,omitempty"`
+	Trigger Trigger `json:"trigger,omitempty"`
+	Type ExecutionType `json:"type,omitempty"`
 	UpdatedAt string `json:"updated_at,omitempty"`
 	ChainId string `json:"chain_id,omitempty"`
 	ChainSymbol string `json:"chain_symbol,omitempty"`
 	ResponseCategory string `json:"response_category,omitempty"`
-	OpeningStrategy string `json:"opening_strategy,omitempty"`
-	ClosingStrategy string `json:"closing_strategy,omitempty"`
+	OpeningStrategy OpenCloseStrategy `json:"opening_strategy,omitempty"`
+	ClosingStrategy OpenCloseStrategy `json:"closing_strategy,omitempty"`
 	StopPrice string `json:"stop_price,omitempty"`
 }
