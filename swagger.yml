@@ -485,6 +485,13 @@ paths:
       summary: getOrders
       operationId: getOrders
       parameters:
+        - name: page_size
+          in: query
+          description: page_size
+          required: false
+          schema:
+            type: integer
+            default: 256
         - name: cursor
           in: query
           description: cursor
@@ -1764,15 +1771,37 @@ components:
           type: string
         cumulative_quantity:
           type: string
+        dollar_based_amount:
+          type: string
         executions:
           items:
             $ref: '#/components/schemas/Execution'
           type: array
+        total_notional:
+          type: object
+          properties:
+            amount:
+              type: string
+            currency_code:
+              type: string
+            currency_id:
+              type: string
+        executed_notional:
+          type: object
+          properties:
+            amount:
+              type: string
+            currency_code:
+              type: string
+            currency_id:
+              type: string
         extended_hours:
           type: boolean
         fees:
           type: string
         id:
+          type: string
+        investment_schedule_id:
           type: string
         instrument:
           type: string
@@ -1791,6 +1820,8 @@ components:
         price:
           type: string
         quantity:
+          type: string
+        ref_id:
           type: string
         reject_reason:
           type: string

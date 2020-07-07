@@ -21,10 +21,14 @@ type Order struct {
 	ClientId string `json:"client_id,omitempty"`
 	CreatedAt time.Time `json:"created_at,omitempty"`
 	CumulativeQuantity string `json:"cumulative_quantity,omitempty"`
+	DollarBasedAmount string `json:"dollar_based_amount,omitempty"`
 	Executions []Execution `json:"executions,omitempty"`
+	TotalNotional OrderTotalNotional `json:"total_notional,omitempty"`
+	ExecutedNotional OrderTotalNotional `json:"executed_notional,omitempty"`
 	ExtendedHours bool `json:"extended_hours,omitempty"`
 	Fees string `json:"fees,omitempty"`
 	Id string `json:"id,omitempty"`
+	InvestmentScheduleId string `json:"investment_schedule_id,omitempty"`
 	Instrument string `json:"instrument,omitempty"`
 	LastTrailPrice string `json:"last_trail_price,omitempty"`
 	LastTrailPriceUpdatedAt string `json:"last_trail_price_updated_at,omitempty"`
@@ -34,6 +38,7 @@ type Order struct {
 	Position string `json:"position,omitempty"`
 	Price string `json:"price,omitempty"`
 	Quantity string `json:"quantity,omitempty"`
+	RefId string `json:"ref_id,omitempty"`
 	RejectReason string `json:"reject_reason,omitempty"`
 	Side Side `json:"side,omitempty"`
 	State OrderState `json:"state,omitempty"`

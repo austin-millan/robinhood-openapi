@@ -109,6 +109,7 @@ Class | Method | HTTP request | Description
  - [Order](docs/Order.md)
  - [OrderAction](docs/OrderAction.md)
  - [OrderState](docs/OrderState.md)
+ - [OrderTotalNotional](docs/OrderTotalNotional.md)
  - [PaginatedAccountInfo](docs/PaginatedAccountInfo.md)
  - [PaginatedFundamentalsData](docs/PaginatedFundamentalsData.md)
  - [PaginatedInstrumentData](docs/PaginatedInstrumentData.md)
